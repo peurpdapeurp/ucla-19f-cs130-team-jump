@@ -1,0 +1,523 @@
+<members>
+  <CameraMover>
+    <signature>CameraMover</signature>
+    <childcount>5</childcount>
+    <type>Class</type>
+    <name>CameraMover</name>
+    <token>public class CameraMover : MonoBehaviour </token>
+    <scope></scope>
+  </CameraMover>
+  <CameraMover.target>
+    <signature>CameraMover.target</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>target</name>
+    <token>public Transform target </token>
+    <scope>CameraMover</scope>
+  </CameraMover.target>
+  <CameraMover.movementSpeed>
+    <signature>CameraMover.movementSpeed</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>movementSpeed</name>
+    <token>public float movementSpeed </token>
+    <scope>CameraMover</scope>
+  </CameraMover.movementSpeed>
+  <CameraMover.Start_x0028__x0029_>
+    <signature>CameraMover.Start()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Start</name>
+    <token>void Start()</token>
+    <scope>CameraMover</scope>
+  </CameraMover.Start_x0028__x0029_>
+  <CameraMover.Update_x0028__x0029_>
+    <signature>CameraMover.Update()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Update</name>
+    <token>void Update()</token>
+    <scope>CameraMover</scope>
+  </CameraMover.Update_x0028__x0029_>
+  <CameraMover.FixedUpdate_x0028__x0029_>
+    <signature>CameraMover.FixedUpdate()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>FixedUpdate</name>
+    <token>private void FixedUpdate()</token>
+    <scope>CameraMover</scope>
+  </CameraMover.FixedUpdate_x0028__x0029_>
+  <CameraTriggerEvent>
+    <signature>CameraTriggerEvent</signature>
+    <childcount>5</childcount>
+    <type>Class</type>
+    <name>CameraTriggerEvent</name>
+    <token>public class CameraTriggerEvent : MonoBehaviour </token>
+    <scope></scope>
+  </CameraTriggerEvent>
+  <CameraTriggerEvent.loseText>
+    <signature>CameraTriggerEvent.loseText</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>loseText</name>
+    <token>public GameObject loseText </token>
+    <scope>CameraTriggerEvent</scope>
+  </CameraTriggerEvent.loseText>
+  <CameraTriggerEvent.cameraMover>
+    <signature>CameraTriggerEvent.cameraMover</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>cameraMover</name>
+    <token>public CameraMover cameraMover </token>
+    <scope>CameraTriggerEvent</scope>
+  </CameraTriggerEvent.cameraMover>
+  <CameraTriggerEvent.Start_x0028__x0029_>
+    <signature>CameraTriggerEvent.Start()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Start</name>
+    <token>void Start()</token>
+    <scope>CameraTriggerEvent</scope>
+  </CameraTriggerEvent.Start_x0028__x0029_>
+  <CameraTriggerEvent.Update_x0028__x0029_>
+    <signature>CameraTriggerEvent.Update()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Update</name>
+    <token>void Update()</token>
+    <scope>CameraTriggerEvent</scope>
+  </CameraTriggerEvent.Update_x0028__x0029_>
+  <CameraTriggerEvent.OnTriggerExit2D_x0028_Collider2D_x0029_>
+    <signature>CameraTriggerEvent.OnTriggerExit2D(Collider2D)</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>OnTriggerExit2D</name>
+    <token>private void OnTriggerExit2D(Collider2D collision)</token>
+    <scope>CameraTriggerEvent</scope>
+    <params>
+      <collision>Collider2D</collision>
+    </params>
+  </CameraTriggerEvent.OnTriggerExit2D_x0028_Collider2D_x0029_>
+  <CharacterController2D>
+    <signature>CharacterController2D</signature>
+    <childcount>22</childcount>
+    <type>Class</type>
+    <name>CharacterController2D</name>
+    <token>public class CharacterController2D : MonoBehaviour </token>
+    <scope></scope>
+  </CharacterController2D>
+  <CharacterController2D.m_JumpForce>
+    <signature>CharacterController2D.m_JumpForce</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_JumpForce</name>
+    <token>[SerializeField]
+private float m_JumpForce </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_JumpForce>
+  <CharacterController2D.m_CrouchSpeed>
+    <signature>CharacterController2D.m_CrouchSpeed</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_CrouchSpeed</name>
+    <token>[Range(0, 1)]
+[SerializeField]
+private float m_CrouchSpeed </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_CrouchSpeed>
+  <CharacterController2D.m_MovementSmoothing>
+    <signature>CharacterController2D.m_MovementSmoothing</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_MovementSmoothing</name>
+    <token>[Range(0, .3f)]
+[SerializeField]
+private float m_MovementSmoothing </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_MovementSmoothing>
+  <CharacterController2D.m_AirControl>
+    <signature>CharacterController2D.m_AirControl</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_AirControl</name>
+    <token>[SerializeField]
+private bool m_AirControl </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_AirControl>
+  <CharacterController2D.m_WhatIsGround>
+    <signature>CharacterController2D.m_WhatIsGround</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_WhatIsGround</name>
+    <token>[SerializeField]
+private LayerMask m_WhatIsGround </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_WhatIsGround>
+  <CharacterController2D.m_GroundCheck>
+    <signature>CharacterController2D.m_GroundCheck</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_GroundCheck</name>
+    <token>[SerializeField]
+private Transform m_GroundCheck </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_GroundCheck>
+  <CharacterController2D.m_CeilingCheck>
+    <signature>CharacterController2D.m_CeilingCheck</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_CeilingCheck</name>
+    <token>[SerializeField]
+private Transform m_CeilingCheck </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_CeilingCheck>
+  <CharacterController2D.m_CrouchDisableCollider>
+    <signature>CharacterController2D.m_CrouchDisableCollider</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_CrouchDisableCollider</name>
+    <token>[SerializeField]
+private Collider2D m_CrouchDisableCollider </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_CrouchDisableCollider>
+  <CharacterController2D.k_GroundedRadius>
+    <signature>CharacterController2D.k_GroundedRadius</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>k_GroundedRadius</name>
+    <token>const float k_GroundedRadius = .2f;</token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.k_GroundedRadius>
+  <CharacterController2D.m_Grounded>
+    <signature>CharacterController2D.m_Grounded</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_Grounded</name>
+    <token>private bool m_Grounded </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_Grounded>
+  <CharacterController2D.k_CeilingRadius>
+    <signature>CharacterController2D.k_CeilingRadius</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>k_CeilingRadius</name>
+    <token>const float k_CeilingRadius = .2f;</token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.k_CeilingRadius>
+  <CharacterController2D.m_Rigidbody2D>
+    <signature>CharacterController2D.m_Rigidbody2D</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_Rigidbody2D</name>
+    <token>private Rigidbody2D m_Rigidbody2D </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_Rigidbody2D>
+  <CharacterController2D.m_FacingRight>
+    <signature>CharacterController2D.m_FacingRight</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_FacingRight</name>
+    <token>private bool m_FacingRight </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_FacingRight>
+  <CharacterController2D.m_Velocity>
+    <signature>CharacterController2D.m_Velocity</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_Velocity</name>
+    <token>private Vector3 m_Velocity </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_Velocity>
+  <CharacterController2D.OnLandEvent>
+    <signature>CharacterController2D.OnLandEvent</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>OnLandEvent</name>
+    <token>[Header("Events")]
+[Space]
+public UnityEvent OnLandEvent </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.OnLandEvent>
+  <CharacterController2D.BoolEvent>
+    <signature>CharacterController2D.BoolEvent</signature>
+    <childcount>0</childcount>
+    <type>Class</type>
+    <name>BoolEvent</name>
+    <token>[System.Serializable]
+public class BoolEvent : UnityEvent&lt;bool&gt; </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.BoolEvent>
+  <CharacterController2D.OnCrouchEvent>
+    <signature>CharacterController2D.OnCrouchEvent</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>OnCrouchEvent</name>
+    <token>public BoolEvent OnCrouchEvent </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.OnCrouchEvent>
+  <CharacterController2D.m_wasCrouching>
+    <signature>CharacterController2D.m_wasCrouching</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>m_wasCrouching</name>
+    <token>private bool m_wasCrouching </token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.m_wasCrouching>
+  <CharacterController2D.Awake_x0028__x0029_>
+    <signature>CharacterController2D.Awake()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Awake</name>
+    <token>private void Awake()</token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.Awake_x0028__x0029_>
+  <CharacterController2D.FixedUpdate_x0028__x0029_>
+    <signature>CharacterController2D.FixedUpdate()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>FixedUpdate</name>
+    <token>private void FixedUpdate()</token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.FixedUpdate_x0028__x0029_>
+  <CharacterController2D.Move_x0028_float_x002C__x0020_bool_x002C__x0020_bool_x0029_>
+    <signature>CharacterController2D.Move(float, bool, bool)</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Move</name>
+    <token>public void Move(float move, bool crouch, bool jump)</token>
+    <scope>CharacterController2D</scope>
+    <params>
+      <move>float</move>
+      <crouch>bool</crouch>
+      <jump>bool</jump>
+    </params>
+  </CharacterController2D.Move_x0028_float_x002C__x0020_bool_x002C__x0020_bool_x0029_>
+  <CharacterController2D.Flip_x0028__x0029_>
+    <signature>CharacterController2D.Flip()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Flip</name>
+    <token>private void Flip()</token>
+    <scope>CharacterController2D</scope>
+  </CharacterController2D.Flip_x0028__x0029_>
+  <EnemyTriggerEvent>
+    <signature>EnemyTriggerEvent</signature>
+    <childcount>5</childcount>
+    <type>Class</type>
+    <name>EnemyTriggerEvent</name>
+    <token>public class EnemyTriggerEvent : MonoBehaviour </token>
+    <scope></scope>
+  </EnemyTriggerEvent>
+  <EnemyTriggerEvent.loseText>
+    <signature>EnemyTriggerEvent.loseText</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>loseText</name>
+    <token>public GameObject loseText </token>
+    <scope>EnemyTriggerEvent</scope>
+  </EnemyTriggerEvent.loseText>
+  <EnemyTriggerEvent.cameraObject>
+    <signature>EnemyTriggerEvent.cameraObject</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>cameraObject</name>
+    <token>public GameObject cameraObject </token>
+    <scope>EnemyTriggerEvent</scope>
+  </EnemyTriggerEvent.cameraObject>
+  <EnemyTriggerEvent.Start_x0028__x0029_>
+    <signature>EnemyTriggerEvent.Start()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Start</name>
+    <token>void Start()</token>
+    <scope>EnemyTriggerEvent</scope>
+  </EnemyTriggerEvent.Start_x0028__x0029_>
+  <EnemyTriggerEvent.Update_x0028__x0029_>
+    <signature>EnemyTriggerEvent.Update()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Update</name>
+    <token>void Update()</token>
+    <scope>EnemyTriggerEvent</scope>
+  </EnemyTriggerEvent.Update_x0028__x0029_>
+  <EnemyTriggerEvent.OnTriggerEnter2D_x0028_Collider2D_x0029_>
+    <signature>EnemyTriggerEvent.OnTriggerEnter2D(Collider2D)</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>OnTriggerEnter2D</name>
+    <token>private void OnTriggerEnter2D(Collider2D collision)</token>
+    <scope>EnemyTriggerEvent</scope>
+    <params>
+      <collision>Collider2D</collision>
+    </params>
+  </EnemyTriggerEvent.OnTriggerEnter2D_x0028_Collider2D_x0029_>
+  <Patrol>
+    <signature>Patrol</signature>
+    <childcount>4</childcount>
+    <type>Class</type>
+    <name>Patrol</name>
+    <token>public class Patrol : MonoBehaviour </token>
+    <scope></scope>
+  </Patrol>
+  <Patrol.speed>
+    <signature>Patrol.speed</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>speed</name>
+    <token>public float speed </token>
+    <scope>Patrol</scope>
+  </Patrol.speed>
+  <Patrol.movingRight>
+    <signature>Patrol.movingRight</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>movingRight</name>
+    <token>private bool movingRight </token>
+    <scope>Patrol</scope>
+  </Patrol.movingRight>
+  <Patrol.groundDetection>
+    <signature>Patrol.groundDetection</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>groundDetection</name>
+    <token>public Transform groundDetection </token>
+    <scope>Patrol</scope>
+  </Patrol.groundDetection>
+  <Patrol.Update_x0028__x0029_>
+    <signature>Patrol.Update()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Update</name>
+    <token>void Update()</token>
+    <scope>Patrol</scope>
+  </Patrol.Update_x0028__x0029_>
+  <PlayerMovement>
+    <signature>PlayerMovement</signature>
+    <childcount>8</childcount>
+    <type>Class</type>
+    <name>PlayerMovement</name>
+    <token>public class PlayerMovement : MonoBehaviour </token>
+    <scope></scope>
+  </PlayerMovement>
+  <PlayerMovement.controller>
+    <signature>PlayerMovement.controller</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>controller</name>
+    <token>public CharacterController2D controller </token>
+    <scope>PlayerMovement</scope>
+  </PlayerMovement.controller>
+  <PlayerMovement.runSpeed>
+    <signature>PlayerMovement.runSpeed</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>runSpeed</name>
+    <token>public float runSpeed </token>
+    <scope>PlayerMovement</scope>
+  </PlayerMovement.runSpeed>
+  <PlayerMovement.horizontalMove>
+    <signature>PlayerMovement.horizontalMove</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>horizontalMove</name>
+    <token>float horizontalMove </token>
+    <scope>PlayerMovement</scope>
+  </PlayerMovement.horizontalMove>
+  <PlayerMovement.jump>
+    <signature>PlayerMovement.jump</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>jump</name>
+    <token>bool jump </token>
+    <scope>PlayerMovement</scope>
+  </PlayerMovement.jump>
+  <PlayerMovement.crouch>
+    <signature>PlayerMovement.crouch</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>crouch</name>
+    <token>bool crouch </token>
+    <scope>PlayerMovement</scope>
+  </PlayerMovement.crouch>
+  <PlayerMovement.Start_x0028__x0029_>
+    <signature>PlayerMovement.Start()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Start</name>
+    <token>void Start()</token>
+    <scope>PlayerMovement</scope>
+  </PlayerMovement.Start_x0028__x0029_>
+  <PlayerMovement.Update_x0028__x0029_>
+    <signature>PlayerMovement.Update()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Update</name>
+    <token>void Update()</token>
+    <scope>PlayerMovement</scope>
+  </PlayerMovement.Update_x0028__x0029_>
+  <PlayerMovement.FixedUpdate_x0028__x0029_>
+    <signature>PlayerMovement.FixedUpdate()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>FixedUpdate</name>
+    <token>private void FixedUpdate()</token>
+    <scope>PlayerMovement</scope>
+  </PlayerMovement.FixedUpdate_x0028__x0029_>
+  <PostProcessScript>
+    <signature>PostProcessScript</signature>
+    <childcount>5</childcount>
+    <type>Class</type>
+    <name>PostProcessScript</name>
+    <token>public class PostProcessScript : MonoBehaviour </token>
+    <scope></scope>
+  </PostProcessScript>
+  <PostProcessScript.player>
+    <signature>PostProcessScript.player</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>player</name>
+    <token>private GameObject player </token>
+    <scope>PostProcessScript</scope>
+  </PostProcessScript.player>
+  <PostProcessScript.cam>
+    <signature>PostProcessScript.cam</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>cam</name>
+    <token>Camera cam </token>
+    <scope>PostProcessScript</scope>
+  </PostProcessScript.cam>
+  <PostProcessScript.mat>
+    <signature>PostProcessScript.mat</signature>
+    <childcount>0</childcount>
+    <type>Field</type>
+    <name>mat</name>
+    <token>public Material mat </token>
+    <scope>PostProcessScript</scope>
+  </PostProcessScript.mat>
+  <PostProcessScript.Start_x0028__x0029_>
+    <signature>PostProcessScript.Start()</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>Start</name>
+    <token>void Start()</token>
+    <scope>PostProcessScript</scope>
+  </PostProcessScript.Start_x0028__x0029_>
+  <PostProcessScript.OnRenderImage_x0028_RenderTexture_x002C__x0020_RenderTexture_x0029_>
+    <signature>PostProcessScript.OnRenderImage(RenderTexture, RenderTexture)</signature>
+    <childcount>0</childcount>
+    <type>Method</type>
+    <name>OnRenderImage</name>
+    <token>void OnRenderImage(RenderTexture src, RenderTexture dest)</token>
+    <scope>PostProcessScript</scope>
+    <comments>
+      <summary>You would not believe what amazing things this method does.</summary>
+      <param-src>A explanation of this really important number</param-src>
+      <param-dest>Another explanation</param-dest>
+    </comments>
+    <params>
+      <src>RenderTexture</src>
+      <dest>RenderTexture</dest>
+    </params>
+  </PostProcessScript.OnRenderImage_x0028_RenderTexture_x002C__x0020_RenderTexture_x0029_>
+</members>
