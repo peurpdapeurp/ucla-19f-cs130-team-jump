@@ -2,26 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// <para> Script that is called by the Camera object after it renders a frame, so that performs PostProcessing before displaying the frame </para>  	
+/// </summary>
+/// <param name="mat"> The material on which to display the resulting image, a planar screen spanning the Camera's view </param>
+/// <param name="mat.shader"> The Shader program bound to the material, shader program that processes pictures displayed onto the material </param>
+/// <param name="src"> The color buffer holding the frame after the camera initially renders the scene </param>
+/// <param name="dest"> The buffer in which the post processed image will be stored, what is ultimately displayed onto the screen  </param>
+/// <param name="player.health"> Health Points of the player, so can apply graphical effects depending on the player's health </param>
+/// <param name="player.transform.position"> Where the player is in the world space </param> 
+/// <param name="camera"> Reference to the Camera Object, so can extract its projection matrix and situate the player onto the screen </param> 
+
 public class PostProcessScript : MonoBehaviour
 {
 
-    private GameObject player;
-    Camera cam;
+    public GameObject player;
+    public Camera cam;
     public Material mat;
 
     
-    void Start()
+    public void Start()
     {
         player = GameObject.Find("Player");
         cam = GetComponent<Camera>();
     }
-
-    /// <summary>
-    /// You would not believe what amazing things this method does.   	
-    /// </summary>
-    /// <param name="src">A explanation of this really important number </param>
-    /// <param name="dest">Another explanation  </param>
-    void OnRenderImage(RenderTexture src, RenderTexture dest)
+    
+    public void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
         //src is color buffer
         if (player != null && cam != null)
