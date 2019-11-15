@@ -7,10 +7,8 @@ public class JumpingPatrol : MonoBehaviour
 {
     [SerializeField] private float m_JumpForce = 400f;           // Amount of force added when the enemy jumps.
     [SerializeField] private LayerMask m_WhatIsGround;           // A mask determining what is ground to the character
-    [SerializeField] private Transform m_GroundCheck;            // A position marking where to check if the player is grounded.
-    [SerializeField] private float m_JumpInterval;
+    [SerializeField] private float m_MaxJumpInterval = 5;
 
-    const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
     private bool m_Grounded;            // Whether or not the player is grounded.
     private Rigidbody2D m_Rigidbody2D;
 
@@ -22,19 +20,14 @@ public class JumpingPatrol : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bool wasGrounded = m_Grounded;
         m_Grounded = false;
 
-        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-        // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].gameObject != gameObject)
-            {
-                m_Grounded = true;
-            }
-        }
+        RaycastHit2D groundInfoBottom = Physics2D.Raycast(transform.position, new Vector2(0, -2), 2, m_WhatIsGround);
+        RaycastHit2D groundInfoLeft = Physics2D.Raycast(transform.position, new Vector2(-2, 0), 2, m_WhatIsGround);
+        RaycastHit2D groundInfoRight = Physics2D.Raycast(transform.position, new Vector2(2, 0), 2, m_WhatIsGround);
+        RaycastHit2D groundInfoTop = Physics2D.Raycast(transform.position, new Vector2(0, 2), 2, m_WhatIsGround);
+        m_Grounded = groundInfoBottom.collider || groundInfoLeft.collider || groundInfoRight.collider || groundInfoTop.collider;
+
     }
 
     IEnumerator JumpRoutine()
@@ -52,7 +45,7 @@ public class JumpingPatrol : MonoBehaviour
                 m_Grounded = false;
                 m_Rigidbody2D.AddForce(new Vector3(Random.Range(-1, 1) * m_JumpForce * 0.5f, m_JumpForce, 0));
             }
-            yield return new WaitForSeconds(m_JumpInterval);
+            yield return new WaitForSeconds(Random.Range(0, m_MaxJumpInterval));
         }
     }
 }
