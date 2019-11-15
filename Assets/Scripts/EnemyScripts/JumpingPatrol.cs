@@ -12,13 +12,20 @@ public class JumpingPatrol : MonoBehaviour
     private bool m_Grounded;            // Whether or not the player is grounded.
     private Rigidbody2D m_Rigidbody2D;
 
-    private void Awake()
+    /**
+     * \brief The Awake function starts the jumping loop through the JumpRoutine coroutine.
+     */
+    public void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         StartCoroutine(JumpRoutine());
     }
 
-    private void FixedUpdate()
+    /**
+     * \brief The FixedUpdate function periodically checks if the object is in contact with any surface, and sets m_Grounded to true
+     * if it is.
+     */
+    public void FixedUpdate()
     {
         m_Grounded = false;
 
@@ -27,9 +34,13 @@ public class JumpingPatrol : MonoBehaviour
         RaycastHit2D groundInfoRight = Physics2D.Raycast(transform.position, new Vector2(2, 0), 2, m_WhatIsGround);
         RaycastHit2D groundInfoTop = Physics2D.Raycast(transform.position, new Vector2(0, 2), 2, m_WhatIsGround);
         m_Grounded = groundInfoBottom.collider || groundInfoLeft.collider || groundInfoRight.collider || groundInfoTop.collider;
-
     }
 
+    /**
+     * \brief A coroutine which periodically makes the object jump if it is grounded. The object will attempt to jump at an interval from 
+     * 0 to m_MaxJumpInterval seconds. The object will randomly jump either to the left, straight up, or to the right. The object
+     * will not jump if it is not in contact with a surface (i.e. m_Grounded is false).
+     */
     IEnumerator JumpRoutine()
     {
         while (true)

@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿/** @file */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WallWalkingPatrol : MonoBehaviour
 {
-    float gravity = 10; // gravity acceleration
+    float gravity = 10;
 
     public float speed;
     public Transform groundDetection;
@@ -16,14 +18,24 @@ public class WallWalkingPatrol : MonoBehaviour
     private void FixedUpdate()
     {
         normal = transform.up;
-        // apply constant weight force according to character normal:
         GetComponent<Rigidbody2D>().AddForce(forceScalar * (-gravity * GetComponent<Rigidbody2D>().mass * normal));
         Debug.DrawRay(transform.position, normal, Color.magenta);
     }
 
-    void Update()
+    /**
+     * \brief The Update function simply calls the Move function.
+     */
+    public void Update()
     {
+        Move();
+    }
 
+    /**
+     * \brief Moves the object which the script is attached to. If the object detects that it has reached the end of the
+     * platform or wall it is currently patrolling, it will turn around and move in the opposite direction.
+     */
+    public void Move()
+    {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
         // Bit shift the index of the layer (8) to get a bit mask

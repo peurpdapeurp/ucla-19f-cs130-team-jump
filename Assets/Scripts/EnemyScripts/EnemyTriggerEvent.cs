@@ -7,19 +7,19 @@ public class EnemyTriggerEvent : MonoBehaviour
     public GameObject loseText;
     public GameObject cameraObject;
 
-    // Start is called before the first frame update
-    void Start()
+    /**
+     * \brief The Start function makes sure the losing text attached to this script is invisible upon intialization.
+     */
+    public void Start()
     {
         loseText.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    /**
+     * \brief The OnTriggerEnter2D function is triggered whenever an object enters the BoxCollider2D trigger attached to the object.
+     * It currently sets the losing text to be visible and stops the camera object associated withe script from moving.
+     */
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
