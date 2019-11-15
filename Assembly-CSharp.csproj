@@ -66,43 +66,44 @@
     <Compile Include="Assets\Scripts\CameraScripts\CameraMover.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\CameraTriggerEvent.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\EnemyTriggerEvent.cs" />
+    <Compile Include="Assets\Scripts\EnemyScripts\JumpingPatrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Patrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\WallWalkingPatrol.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Important Stuff/UCLA/Documents for Classes/09 2019 Fall Quarter/CS 130/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
