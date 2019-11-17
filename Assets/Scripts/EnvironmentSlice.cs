@@ -27,8 +27,22 @@ public class EnvironmentSlice : MonoBehaviour
     /// </summary>
     private MusicLevel musicLevel;
 
+    /// <summary>
+    /// Contains the coordinates where the next slice should be places. Value is
+    /// created by using the previous slice's upper bounds.
+    /// </summary>
     private Vector3 currMax;
+
+    /// <summary>
+    /// Holds the grid GameObject where all the slices are generated in.
+    /// </summary>
     private Grid grid;
+
+    /// <summary>
+    /// Offset used to check when the next slice should be generated. Used with
+    /// the camera's upper bound.
+    /// </summary>
+    private const int kCameraOffset = 2;
 
     /// <summary>
     /// Method used to notify the class of the current music level.
@@ -94,8 +108,7 @@ public class EnvironmentSlice : MonoBehaviour
 
     private void UpdateEnvironment()
     {
-        // musicLevel is changed here in order to showcase the different
-        // tileMaps.
+        // musicLevel is changed here in order to show the different tileMaps.
         if (musicLevel == MusicLevel.High)
         {
             CreateHighEnvironmentSlice();
@@ -119,6 +132,30 @@ public class EnvironmentSlice : MonoBehaviour
         musicLevel = MusicLevel.Low;
         currMax = new Vector3(0, 0, 0);
 
-        InvokeRepeating("UpdateEnvironment", 0.0f, 1.5f);
+        UpdateEnvironment();
+    }
+
+    private bool ShouldGenerateSlice()
+    {
+        float halfHeight = Camera.main.orthographicSize;
+        float halfWidth = Camera.main.aspect * halfHeight;
+
+        var cameraXUpperBound = Camera.main.transform.position.x + halfWidth;
+        if ((cameraXUpperBound + kCameraOffset) < currMax.x)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void Update()
+    {
+        if (!ShouldGenerateSlice())
+        {
+            return;
+        }
+
+        UpdateEnvironment();
     }
 }
