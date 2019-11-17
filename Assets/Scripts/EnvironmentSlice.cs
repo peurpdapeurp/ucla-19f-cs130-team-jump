@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 /// <summary>
 /// EnvironmentSlice uses the current music level heard by the player in
@@ -10,14 +11,6 @@ using UnityEngine;
 /// </summary>
 public class EnvironmentSlice : MonoBehaviour
 {
-    /// <summary>
-    /// Store for the prefab that will be instantiated at runtime to make up the
-    /// environment.
-    /// </summary>
-    public GameObject prefab;
-
-    // Todo: Add more prefabs that can be instantiated in the game environment.
-
     // Todo: Move MusicLevel enum inside the class that handles the music.
     /// <summary>
     /// MusicLevel will be used to determine the current pitch of the music.
@@ -34,6 +27,9 @@ public class EnvironmentSlice : MonoBehaviour
     /// </summary>
     private MusicLevel musicLevel;
 
+    private Vector3 currMax;
+    private Grid grid;
+
     /// <summary>
     /// Method used to notify the class of the current music level.
     /// </summary>
@@ -48,62 +44,81 @@ public class EnvironmentSlice : MonoBehaviour
         // TODO: Add logic to populate powerups.
     }
 
-    // Todo: Create the ground with elevation depending on music level.
-    private void CreateGround()
+    private void InstantiateSlice(ref GameObject slice)
     {
-        int xStartPos = -4;
-        int xEndPos = 5;
-        int yPos = -4;
-
-        for (int i = xStartPos; i < xEndPos; ++i)
-        {
-            Instantiate(prefab, new Vector3(i, yPos, 0), Quaternion.identity);
-        }
-    }
-
-    // Todo: Create platforms if the environment is meant to be high elevation.
-    private void CreatePlatforms()
-    {
-        int platformLength = 2;
-
-        for (int i = 0; i < platformLength; ++i)
-        {
-            Instantiate(prefab, new Vector3(2 + i, 0, 0), Quaternion.identity);
-        }
+        var clone = Instantiate(slice, currMax, Quaternion.identity, grid.transform);
+        currMax = clone.GetComponent<TilemapRenderer>().bounds.max;
+        AlignSlices(ref currMax);
     }
 
     private void CreateLowEnvironmentSlice()
     {
-        CreateGround();
-        CreatePlatforms();
+        // Tilemaps were created at the same time, which causes them to have
+        // different y values as default. Therefore have to manually set the
+        // value. Value was determined by aligning the slices in the game.
+        currMax.y = 0;
+
+        var lowTileMap = Resources.Load("TileMaps/LowLevelTileMap") as GameObject;
+        InstantiateSlice(ref lowTileMap);
     }
 
     private void CreateMediumEnvironmentSlice()
     {
+        // Tilemaps were created at the same time, which causes them to have
+        // different y values as default. Therefore have to manually set the
+        // value. Value was determined by aligning the slices in the game.
+        currMax.y = 19.0f;
+
+        var medTileMap = Resources.Load("TileMaps/MidLevelTileMap") as GameObject;
+        InstantiateSlice(ref medTileMap);
     }
 
     private void CreateHighEnvironmentSlice()
     {
+        // Tilemaps were created at the same time, which causes them to have
+        // different y values as default. Therefore have to manually set the
+        // value. Value was determined by aligning the slices in the game.
+        currMax.y = 35.0f;
+
+        var highTileMap = Resources.Load("TileMaps/HighLevelTileMap") as GameObject;
+        InstantiateSlice(ref highTileMap);
+    }
+
+    // Slices need to be aligned. Right now this number is determined by
+    // manually aligning the slices. But the value should be changed such that
+    // we use information from the game instead of using a pre-determined value.
+    private void AlignSlices(ref Vector3 vector)
+    {
+        currMax.x -= 0.5f;
+    }
+
+    private void UpdateEnvironment()
+    {
+        // musicLevel is changed here in order to showcase the different
+        // tileMaps.
+        if (musicLevel == MusicLevel.High)
+        {
+            CreateHighEnvironmentSlice();
+            musicLevel = MusicLevel.Low;
+        }
+        else if (musicLevel == MusicLevel.Medium)
+        {
+            CreateMediumEnvironmentSlice();
+            musicLevel = MusicLevel.High;
+        }
+        else
+        {
+            CreateLowEnvironmentSlice();
+            musicLevel = MusicLevel.Medium;
+        }
     }
 
     private void Start()
     {
+        grid = new GameObject("Grid").AddComponent<Grid>();
         musicLevel = MusicLevel.Low;
-    }
+        currMax = new Vector3(0, 0, 0);
 
-    private void Update()
-    {
-        // TODO: Update only when the user is close to the edge of the previous
-        //       environment slice.
-        if (musicLevel == MusicLevel.High)
-        {
-            CreateHighEnvironmentSlice();
-        } else if (musicLevel == MusicLevel.Medium)
-        {
-            CreateMediumEnvironmentSlice();
-        } else
-        {
-            CreateLowEnvironmentSlice();
-        }
+        InvokeRepeating("UpdateEnvironment", 0.0f, 1.5f);
     }
 }
