@@ -46,9 +46,7 @@ public class JumpingPatrol : MonoBehaviour
         while (true)
         {
             Debug.Log("Entered jump routine loop");
-            //bool jump = (Random.value > 0.5f);
             bool jump = true;
-            // If the player should jump...
             if (m_Grounded && jump)
             {
                 Debug.Log("Trying to jump");

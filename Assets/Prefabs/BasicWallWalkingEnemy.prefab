@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1772463814462293026
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1772463814462293027}
-  m_Layer: 9
-  m_Name: GroundDetection
-  m_TagString: Untagged
-  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1772463814462293027
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772463814462293026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.184, y: -0.525, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1772463815153282500}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1772463815153282497
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1772463815153282500}
   - component: {fileID: 1772463815153282503}
-  - component: {fileID: 1772463815153282506}
-  - component: {fileID: 1772463815153282501}
   - component: {fileID: 1772463815153282505}
   - component: {fileID: 1772463815153282507}
   - component: {fileID: 1772463815153282502}
   - component: {fileID: 1772463815153282504}
+  - component: {fileID: 8422135100155611689}
+  - component: {fileID: 4572777723717119016}
   m_Layer: 9
   m_Name: BasicWallWalkingEnemy
   m_TagString: Untagged
@@ -63,8 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 6.78, y: -2.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1772463814462293027}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -117,35 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1772463815153282506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772463815153282497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a38b932de2ba2f4c94f707215cb14f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loseText: {fileID: 0}
-  cameraObject: {fileID: 0}
---- !u!114 &1772463815153282501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772463815153282497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd3861bf45e51ff46a803bd3e967db5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  groundDetection: {fileID: 1772463814462293027}
-  forceScalar: 1
 --- !u!50 &1772463815153282505
 Rigidbody2D:
   serializedVersion: 4
@@ -225,3 +165,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 0.19422507}
   m_EdgeRadius: 0
+--- !u!114 &8422135100155611689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772463815153282497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3861bf45e51ff46a803bd3e967db5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &4572777723717119016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772463815153282497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a38b932de2ba2f4c94f707215cb14f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loseText: {fileID: 0}
+  cameraObject: {fileID: 0}

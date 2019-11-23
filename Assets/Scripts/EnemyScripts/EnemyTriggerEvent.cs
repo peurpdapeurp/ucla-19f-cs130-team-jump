@@ -8,10 +8,14 @@ public class EnemyTriggerEvent : MonoBehaviour
     public GameObject cameraObject;
 
     /**
-     * \brief The Start function makes sure the losing text attached to this script is invisible upon intialization.
+     * \brief The Start function automatically assigns the cameraObject and loseText objects 
+     * to the corresponding game objects in the scene, and makes sure the losing text attached 
+     * to this script is invisible upon intialization.
      */
     public void Start()
     {
+        cameraObject = GameObject.Find("MainCamera");
+        loseText = GameObject.Find("LoseText");
         loseText.SetActive(false);
     }
 
