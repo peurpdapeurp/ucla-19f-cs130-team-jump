@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4193259678107507950}
   - component: {fileID: 4193259678107507951}
   - component: {fileID: 4193259678107507957}
-  - component: {fileID: 4193259678107507945}
   - component: {fileID: 4193259678107507944}
   m_Layer: 0
   m_Name: BasicJumpingEnemy
@@ -158,20 +157,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4193259678107507945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4193259678107507948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a38b932de2ba2f4c94f707215cb14f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loseText: {fileID: 0}
-  cameraObject: {fileID: 0}
 --- !u!114 &4193259678107507944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702845eeed29af24d9dba405134deb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loseText: {fileID: 0}
+  cameraObject: {fileID: 0}
   speed: 5
   whatIsGround:
     serializedVersion: 2

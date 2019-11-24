@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3525792107913102577}
   - component: {fileID: 3525792107913102589}
   - component: {fileID: 3525792107913102588}
-  - component: {fileID: 3525792107913102586}
   - component: {fileID: 3525792107913102587}
   - component: {fileID: 7628504785024705500}
   m_Layer: 10
@@ -132,20 +131,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3525792107913102586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3525792107913102576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a38b932de2ba2f4c94f707215cb14f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loseText: {fileID: 0}
-  cameraObject: {fileID: 0}
 --- !u!61 &3525792107913102587
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -184,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58b291f608e2574eb80e40cdc79dcea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loseText: {fileID: 0}
+  cameraObject: {fileID: 0}
   speed: 5
   whatIsGround:
     serializedVersion: 2

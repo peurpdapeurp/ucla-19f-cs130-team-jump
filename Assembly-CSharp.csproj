@@ -65,7 +65,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraScripts\CameraMover.cs" />
     <Compile Include="Assets\Scripts\CameraScripts\CameraTriggerEvent.cs" />
-    <Compile Include="Assets\Scripts\EnemyScripts\EnemyTriggerEvent.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\JumpingPatrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Patrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\WallWalkingPatrol.cs" />

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
+    public GameObject loseText;
+    public GameObject cameraObject;
     public float speed = 5f;
     public LayerMask whatIsGround;
     private float groundDetectionXOffset;
@@ -19,6 +21,8 @@ public class Patrol : MonoBehaviour
 
     public void Start()
     {
+        cameraObject = GameObject.Find("MainCamera");
+        loseText = GameObject.Find("LoseText");
         renderer = gameObject.GetComponent<Renderer>();
         topRightCorner = renderer.bounds.max;
         bottomLeftCorner = renderer.bounds.min;
@@ -69,6 +73,21 @@ public class Patrol : MonoBehaviour
             newScale.x *= -1;
             transform.localScale = newScale;
             speed = -speed;
+        }
+    }
+
+    /**
+     * \brief The OnTriggerEnter2D function is triggered whenever an object enters the BoxCollider2D trigger attached to the object.
+     * It currently sets the losing text to be visible and stops the camera object associated withe script from moving.
+     */
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Enemy: OnTriggerEnter2D");
+            loseText.SetActive(true);
+            Destroy(collision.gameObject);
+            cameraObject.GetComponent<CameraMover>().movementSpeed = 0;
         }
     }
 }

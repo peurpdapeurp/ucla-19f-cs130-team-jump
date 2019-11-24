@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1772463815153282507}
   - component: {fileID: 1772463815153282502}
   - component: {fileID: 1772463815153282504}
-  - component: {fileID: 3846504187041602281}
   - component: {fileID: 7775345911870258616}
   m_Layer: 9
   m_Name: BasicWallWalkingEnemy
@@ -165,20 +164,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 0.19422507}
   m_EdgeRadius: 0
---- !u!114 &3846504187041602281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772463815153282497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a38b932de2ba2f4c94f707215cb14f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loseText: {fileID: 0}
-  cameraObject: {fileID: 0}
 --- !u!114 &7775345911870258616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3861bf45e51ff46a803bd3e967db5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loseText: {fileID: 0}
+  cameraObject: {fileID: 0}
   speed: 5
   whatIsGround:
     serializedVersion: 2
