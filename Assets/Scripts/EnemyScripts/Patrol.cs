@@ -25,7 +25,7 @@ public class Patrol : MonoBehaviour
         var h = topRightCorner.y - bottomLeftCorner.y;
         groundDetectionXOffset = w / 2 + 0.25f * w;
         groundDetectionYOffset = h / 2;
-        groundDetectionRayLengthScalar = h;
+        groundDetectionRayLengthScalar = 0.5f;
     }
 
     /**
@@ -35,8 +35,6 @@ public class Patrol : MonoBehaviour
     {
         topRightCorner = renderer.bounds.max;
         bottomLeftCorner = renderer.bounds.min;
-        Debug.DrawRay(topRightCorner, Vector2.up);
-        Debug.DrawRay(bottomLeftCorner, Vector2.down);
         normal = transform.up;
         Move();
     }
@@ -49,8 +47,8 @@ public class Patrol : MonoBehaviour
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-        Vector3 groundRayStart = new Vector3(transform.position[0] + groundDetectionXOffset,
-                                             transform.position[1] - groundDetectionYOffset,
+        Vector3 groundRayStart = new Vector3(transform.position[0] + groundDetectionXOffset * Mathf.Sign(normal[1]),
+                                             transform.position[1] - groundDetectionYOffset * Mathf.Sign(normal[1]),
                                              transform.position[2]);
         Vector2 groundRay = new Vector2(normal[0], -1 * normal[1] * groundDetectionRayLengthScalar);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundRayStart, groundRay, groundDetectionRayLengthScalar, whatIsGround);
@@ -59,15 +57,17 @@ public class Patrol : MonoBehaviour
         {
             if (movingRight)
             {
-                transform.eulerAngles = new Vector3(0, -180, 0);
                 movingRight = false;
             }
             else
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);
                 movingRight = true;
             }
             groundDetectionXOffset = -groundDetectionXOffset;
+            Vector3 newScale = transform.localScale;
+            newScale.x *= -1;
+            transform.localScale = newScale;
+            speed = -speed;
         }
     }
 }
