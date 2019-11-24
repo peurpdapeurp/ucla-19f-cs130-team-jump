@@ -13,16 +13,17 @@ public class Patrol : MonoBehaviour
 
     protected bool movingRight = true;
 
-    Renderer renderer;
-    Vector3 topRightCorner, bottomLeftCorner;
+    protected Renderer renderer;
+    protected Vector3 topRightCorner, bottomLeftCorner;
+    protected float w, h;
 
     public void Start()
     {
         renderer = gameObject.GetComponent<Renderer>();
         topRightCorner = renderer.bounds.max;
         bottomLeftCorner = renderer.bounds.min;
-        var w = topRightCorner.x - bottomLeftCorner.x;
-        var h = topRightCorner.y - bottomLeftCorner.y;
+        w = topRightCorner.x - bottomLeftCorner.x;
+        h = topRightCorner.y - bottomLeftCorner.y;
         groundDetectionXOffset = w / 2 + 0.25f * w;
         groundDetectionYOffset = h / 2;
         groundDetectionRayLengthScalar = 0.5f;
