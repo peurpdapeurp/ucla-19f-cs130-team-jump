@@ -13,15 +13,19 @@ public class Patrol : MonoBehaviour
 
     protected bool movingRight = true;
 
+    Renderer renderer;
+    Vector3 topRightCorner, bottomLeftCorner;
+
     public void Start()
     {
-        var p1 = gameObject.transform.TransformPoint(0, 0, 0);
-        var p2 = gameObject.transform.TransformPoint(1, 1, 0);
-        var w = p2.x - p1.x;
-        var h = p2.y - p1.y;
-        groundDetectionXOffset = w * 6;
-        groundDetectionYOffset = h * 5;
-        groundDetectionRayLengthScalar = h * 4;
+        renderer = gameObject.GetComponent<Renderer>();
+        topRightCorner = renderer.bounds.max;
+        bottomLeftCorner = renderer.bounds.min;
+        var w = topRightCorner.x - bottomLeftCorner.x;
+        var h = topRightCorner.y - bottomLeftCorner.y;
+        groundDetectionXOffset = w / 2 + 0.25f * w;
+        groundDetectionYOffset = h / 2;
+        groundDetectionRayLengthScalar = h;
     }
 
     /**
@@ -29,6 +33,10 @@ public class Patrol : MonoBehaviour
      */
     public void Update()
     {
+        topRightCorner = renderer.bounds.max;
+        bottomLeftCorner = renderer.bounds.min;
+        Debug.DrawRay(topRightCorner, Vector2.up);
+        Debug.DrawRay(bottomLeftCorner, Vector2.down);
         normal = transform.up;
         Move();
     }
@@ -41,7 +49,7 @@ public class Patrol : MonoBehaviour
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-        Vector3 groundRayStart = new Vector3(transform.position[0] + groundDetectionXOffset, 
+        Vector3 groundRayStart = new Vector3(transform.position[0] + groundDetectionXOffset,
                                              transform.position[1] - groundDetectionYOffset,
                                              transform.position[2]);
         Vector2 groundRay = new Vector2(normal[0], -1 * normal[1] * groundDetectionRayLengthScalar);
@@ -61,6 +69,5 @@ public class Patrol : MonoBehaviour
             }
             groundDetectionXOffset = -groundDetectionXOffset;
         }
-        Debug.Log("Ground info's collider: " + groundInfo.collider);
     }
 }
