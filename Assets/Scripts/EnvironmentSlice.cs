@@ -53,11 +53,15 @@ public class EnvironmentSlice : MonoBehaviour
     /// </summary>
     private const int kCameraOffset = 2;
 
-    private const int kMaxNumberEnemiesPerSlice = 4;
+    /// <summary>
+    /// Creat different number of enemies based on the slice that was generated.
+    /// </summary>
+    private const int kMaxNumberEnemiesPerLowLevelSlice = 2;
+    private const int kMaxNumberEnemiesPerMediumLevelSlice = 3;
+    private const int kMaxNumberEnemiesPerHighLevelSlice = 4;
 
-    private const float kLowMusicLevelYOffset = -7.0f;
-    private const float kMidMusicLevelYOffset = 12.0f;
-    private const float kHighMusicLevelYOffset = 28.0f;
+    // The number of slices there are per level.
+    private const int kMaxNumOfLevelSlices = 3;
 
     private System.Random randomGenerator;
 
@@ -77,9 +81,9 @@ public class EnvironmentSlice : MonoBehaviour
 
     private void InstantiateSlice(ref GameObject slice)
     {
+        AlignSlices(ref currMax);
         GameObject clone = Instantiate(slice, currMax, Quaternion.identity, grid.transform) as GameObject;
         currMax = clone.GetComponent<TilemapRenderer>().bounds.max;
-        AlignSlices(ref currMax);
 
         var tileMap = clone.GetComponent<Tilemap>();
 
@@ -88,40 +92,28 @@ public class EnvironmentSlice : MonoBehaviour
 
     private void CreateLowEnvironmentSlice()
     {
-        // Tilemaps were created at the same time, which causes them to have
-        // different y values as default. Therefore have to manually set the
-        // value. Value was determined by aligning the slices in the game.
-        currMax.y = kLowMusicLevelYOffset;
-
         generatedLevel = LevelGenerated.Low;
 
-        var lowTileMap = Resources.Load("TileMaps/LowLevelTileMap") as GameObject;
+        int sliceToSelect = randomGenerator.Next(1, kMaxNumOfLevelSlices);
+        GameObject lowTileMap = Resources.Load("TileMaps/LowLevelTileMap" + sliceToSelect.ToString()) as GameObject;
         InstantiateSlice(ref lowTileMap);
     }
 
     private void CreateMediumEnvironmentSlice()
     {
-        // Tilemaps were created at the same time, which causes them to have
-        // different y values as default. Therefore have to manually set the
-        // value. Value was determined by aligning the slices in the game.
-        currMax.y = kMidMusicLevelYOffset;
-
         generatedLevel = LevelGenerated.Medium;
 
-        var medTileMap = Resources.Load("TileMaps/MidLevelTileMap") as GameObject;
+        int sliceToSelect = randomGenerator.Next(1, kMaxNumOfLevelSlices);
+        GameObject medTileMap = Resources.Load("TileMaps/MediumLevelTileMap" + sliceToSelect.ToString()) as GameObject;
         InstantiateSlice(ref medTileMap);
     }
 
     private void CreateHighEnvironmentSlice()
     {
-        // Tilemaps were created at the same time, which causes them to have
-        // different y values as default. Therefore have to manually set the
-        // value. Value was determined by aligning the slices in the game.
-        currMax.y = kHighMusicLevelYOffset;
-
         generatedLevel = LevelGenerated.High;
 
-        var highTileMap = Resources.Load("TileMaps/HighLevelTileMap") as GameObject;
+        int sliceToSelect = randomGenerator.Next(1, kMaxNumOfLevelSlices);
+        GameObject highTileMap = Resources.Load("TileMaps/HighLevelTileMap" + sliceToSelect.ToString()) as GameObject;
         InstantiateSlice(ref highTileMap);
     }
 
@@ -130,7 +122,8 @@ public class EnvironmentSlice : MonoBehaviour
     // we use information from the game instead of using a pre-determined value.
     private void AlignSlices(ref Vector3 vector)
     {
-        currMax.x -= 0.5f;
+        currMax.x += 15.5f;
+        currMax.y = 0.0f;
     }
 
     private void UpdateEnvironment()
@@ -151,20 +144,6 @@ public class EnvironmentSlice : MonoBehaviour
             CreateLowEnvironmentSlice();
             musicLevel = MusicLevel.Medium;
         }
-    }
-
-    private bool ShouldGenerateSlice()
-    {
-        float halfHeight = Camera.main.orthographicSize;
-        float halfWidth = Camera.main.aspect * halfHeight;
-
-        var cameraXUpperBound = Camera.main.transform.position.x + halfWidth;
-        if ((cameraXUpperBound + kCameraOffset) < currMax.x)
-        {
-            return false;
-        }
-
-        return true;
     }
 
     private void GenerateEnemies(Tilemap tileMap)
@@ -190,7 +169,19 @@ public class EnvironmentSlice : MonoBehaviour
             }
         }
 
-        int numberEnemiesToSpawn = randomGenerator.Next(1, kMaxNumberEnemiesPerSlice);
+        int maxNumEnemies = 0;
+        if (generatedLevel == LevelGenerated.Low)
+        {
+            maxNumEnemies = kMaxNumberEnemiesPerLowLevelSlice;
+        } else if (generatedLevel == LevelGenerated.Medium)
+        {
+            maxNumEnemies = kMaxNumberEnemiesPerMediumLevelSlice;
+        } else
+        {
+            maxNumEnemies = kMaxNumberEnemiesPerHighLevelSlice;
+        }
+
+        int numberEnemiesToSpawn = randomGenerator.Next(1, maxNumEnemies);
         for (int i = 0; i < numberEnemiesToSpawn; ++i)
         {
             int listIndex = randomGenerator.Next(locations.Count);
@@ -201,6 +192,20 @@ public class EnvironmentSlice : MonoBehaviour
             // Don't instantiate at same place;
             locations.RemoveAt(listIndex);
         }
+    }
+
+    private bool ShouldGenerateSlice()
+    {
+        float halfHeight = Camera.main.orthographicSize;
+        float halfWidth = Camera.main.aspect * halfHeight;
+
+        var cameraXUpperBound = Camera.main.transform.position.x + halfWidth;
+        if ((cameraXUpperBound + kCameraOffset) < currMax.x)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private void Start()
