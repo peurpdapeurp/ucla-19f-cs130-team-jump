@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 3;
+    public int invulnerabilityPeriodSeconds = 1;
     private int currentHealth;
     private GameObject currentHealthText;
     public GameObject loseText;
     public GameObject cameraObject;
     public GameObject player;
+    private float lastDamageTime = 0f;
 
     public void Start()
     {
@@ -25,6 +27,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void applyDamage()
     {
+        if (Time.time - lastDamageTime < invulnerabilityPeriodSeconds)
+        {
+            return;
+        }
         currentHealth--;
         currentHealthText.GetComponent<Text>().text = "Current health: " + currentHealth;
         if (currentHealth == 0)
@@ -33,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
             loseText.GetComponent<Text>().enabled = true;
             Destroy(player);
         }
+        lastDamageTime = Time.time;
     }
     public int getCurrentHealth()
     {
