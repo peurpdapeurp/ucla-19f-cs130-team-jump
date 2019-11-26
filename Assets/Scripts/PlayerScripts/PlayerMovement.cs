@@ -25,17 +25,14 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log("Jump");
             jump = true;
         }
         if (Input.GetButtonDown("Crouch"))
         {
-            Debug.Log("Crouch down");
             crouch = true;
         }
         else if (Input.GetButtonUp("Crouch"))
         {
-            Debug.Log("Crouch up");
             crouch = false;
         }
     }

@@ -54,11 +54,19 @@ public class EnvironmentSlice : MonoBehaviour
     private const int kCameraOffset = 2;
 
     /// <summary>
-    /// Creat different number of enemies based on the slice that was generated.
+    /// Create different number of enemies based on the slice that was generated.
     /// </summary>
-    private const int kMaxNumberEnemiesPerLowLevelSlice = 10;
-    private const int kMaxNumberEnemiesPerMediumLevelSlice = 20;
-    private const int kMaxNumberEnemiesPerHighLevelSlice = 30;
+    private const int kMaxNumberEnemiesPerLowLevelSlice = 20;
+    private const int kMaxNumberEnemiesPerMediumLevelSlice = 15;
+    private const int kMaxNumberEnemiesPerHighLevelSlice = 20;
+
+    /// <summary>
+    /// Enemy type strings
+    /// </summary>
+    private const string enemyPrefabStringAerial = "Enemies/BasicAerialEnemy";
+    private const string enemyPrefabStringWallWalking = "Enemies/BasicWallWalkingEnemy";
+    private const string enemyPrefabStringJumping = "Enemies/BasicJumpingEnemy";
+    private const string enemyPrefabStringTerrain = "Enemies/BasicTerrainEnemy";
 
     // The number of slices there are per level.
     private const int kMaxNumOfLevelSlices = 3;
@@ -157,12 +165,24 @@ public class EnvironmentSlice : MonoBehaviour
                 Vector3Int localPlace = new Vector3Int(x, y, 0);
                 if (tileMap.HasTile(localPlace))
                 {
-                    Vector3Int tileAbovePos = new Vector3Int(x, y + 1, 0);
-                    Vector3Int twoTileAbovePos = new Vector3Int(x, y + 1, 0);
-                    if (!tileMap.HasTile(tileAbovePos) && !tileMap.HasTile(twoTileAbovePos))
+                    if (aboveIsEmpty(tileMap, localPlace, 2))
                     {
-                        Vector3 emptyTile = tileMap.CellToWorld(tileAbovePos);
-                        //Debug.Log(emptyTile.ToString());
+                        Vector3 emptyTile = tileMap.CellToWorld(localPlace + new Vector3Int(0, 2, 0));
+                        locations.Add(emptyTile);
+                    }
+                    if (belowIsEmpty(tileMap, localPlace, 2) && localPlace[1] > -5)
+                    {
+                        Vector3 emptyTile = tileMap.CellToWorld(localPlace + new Vector3Int(0, -2, 0));
+                        locations.Add(emptyTile);
+                    }
+                    if (rightIsEmpty(tileMap, localPlace, 2))
+                    {
+                        Vector3 emptyTile = tileMap.CellToWorld(localPlace + new Vector3Int(2, 0, 0));
+                        locations.Add(emptyTile);
+                    }
+                    if (leftIsEmpty(tileMap, localPlace, 2))
+                    {
+                        Vector3 emptyTile = tileMap.CellToWorld(localPlace + new Vector3Int(-2, 0, 0));
                         locations.Add(emptyTile);
                     }
                 }
@@ -184,39 +204,112 @@ public class EnvironmentSlice : MonoBehaviour
         int numberEnemiesToSpawn = randomGenerator.Next(1, maxNumEnemies);
         for (int i = 0; i < numberEnemiesToSpawn; ++i)
         {
-            int listIndex = randomGenerator.Next(locations.Count);
-            
-            var enemy = selectRandomEnemy() as GameObject;
-            Instantiate(enemy, locations[listIndex], Quaternion.identity);
+            string enemyPrefabString = getRandomEnemyPrefabString();
+            var enemy = Resources.Load(enemyPrefabString) as GameObject;
 
-            // Don't instantiate at same place;
-            locations.RemoveAt(listIndex);
+            switch (enemyPrefabString)
+            {
+                case enemyPrefabStringAerial:
+                    {
+                        int listIndex = randomGenerator.Next(locations.Count);
+                        Instantiate(enemy, locations[listIndex], Quaternion.Euler(0, 0, 0));
+                        // Don't instantiate at same place;
+                        locations.RemoveAt(listIndex);
+                        break;
+                    }
+                case enemyPrefabStringJumping:
+                    {
+                        int listIndex = randomGenerator.Next(locations.Count);
+                        Instantiate(enemy, locations[listIndex], Quaternion.Euler(0, 0, 0));
+                        // Don't instantiate at same place;
+                        locations.RemoveAt(listIndex);
+                        break;
+                    }
+                case enemyPrefabStringWallWalking:
+                    {
+                        int listIndex = randomGenerator.Next(locations.Count);
+                        Instantiate(enemy, locations[listIndex], Quaternion.Euler(0, 0, 180));
+                        // Don't instantiate at same place;
+                        locations.RemoveAt(listIndex);
+                        break;
+                    }
+                case enemyPrefabStringTerrain:
+                    {
+                        int listIndex = randomGenerator.Next(locations.Count);
+                        Instantiate(enemy, locations[listIndex], Quaternion.Euler(0, 0, 0));
+                        // Don't instantiate at same place;
+                        locations.RemoveAt(listIndex);
+                        break;
+                    }
+            }
+
+            
         }
     }
 
-    private Object selectRandomEnemy()
+    private bool aboveIsEmpty(Tilemap tileMap, Vector3Int localPlace, int distance)
+    {
+        for (int i = 1; i <= distance; i++)
+        {
+            if (tileMap.HasTile(localPlace + new Vector3Int(0, i, 0)))
+                return false;
+        }
+        return true;
+    }
+
+    private bool belowIsEmpty(Tilemap tileMap, Vector3Int localPlace, int distance)
+    {
+        for (int i = 1; i <= distance; i++)
+        {
+            if (tileMap.HasTile(localPlace + new Vector3Int(0, -i, 0)))
+                return false;
+        }
+        return true;
+    }
+
+    private bool rightIsEmpty(Tilemap tileMap, Vector3Int localPlace, int distance)
+    {
+        for (int i = 1; i <= distance; i++)
+        {
+            if (tileMap.HasTile(localPlace + new Vector3Int(i, 0, 0)))
+                return false;
+        }
+        return true;
+    }
+
+    private bool leftIsEmpty(Tilemap tileMap, Vector3Int localPlace, int distance)
+    {
+        for (int i = 1; i <= distance; i++)
+        {
+            if (tileMap.HasTile(localPlace + new Vector3Int(-i, 0, 0)))
+                return false;
+        }
+        return true;
+    }
+
+    private string getRandomEnemyPrefabString()
     {
         switch (randomGenerator.Next(4))
         {
             case 0:
                 {
-                    return Resources.Load("Enemies/BasicAerialEnemy");
+                    return enemyPrefabStringAerial;
                 }
             case 1:
                 {
-                    return Resources.Load("Enemies/BasicTerrainEnemy");
+                    return enemyPrefabStringJumping;
                 }
             case 2:
                 {
-                    return Resources.Load("Enemies/BasicWallWalkingEnemy");
+                    return enemyPrefabStringTerrain;
                 }
             case 3:
                 {
-                    return Resources.Load("Enemies/BasicJumpingEnemy");
+                    return enemyPrefabStringWallWalking;
                 }
             default:
                 {
-                    return Resources.Load("Enemies/BasicTerrainEnemy");
+                    return enemyPrefabStringTerrain;
                 }
         }
     }

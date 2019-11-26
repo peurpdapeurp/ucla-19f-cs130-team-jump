@@ -12,6 +12,7 @@ public class Patrol : MonoBehaviour
     private float groundDetectionXOffset;
     private float groundDetectionYOffset;
     private float groundDetectionRayLengthScalar;
+    private float sideDetectionRayLengthScalar;
     private Vector2 normal;
 
     protected bool movingRight = true;
@@ -33,6 +34,7 @@ public class Patrol : MonoBehaviour
         groundDetectionXOffset = w / 2 + 0.25f * w;
         groundDetectionYOffset = h / 2;
         groundDetectionRayLengthScalar = 0.5f;
+        sideDetectionRayLengthScalar = w;
     }
 
     /**
@@ -60,7 +62,14 @@ public class Patrol : MonoBehaviour
         Vector2 groundRay = new Vector2(normal[0], -1 * normal[1] * groundDetectionRayLengthScalar);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundRayStart, groundRay, groundDetectionRayLengthScalar, whatIsGround);
         Debug.DrawRay(groundRayStart, groundRay, Color.red);
-        if (groundInfo.collider == false)
+
+        Vector3 sideRayStart = transform.position + new Vector3((w / 2 + w * 0.1f) * Mathf.Sign(transform.localScale[0]), -w*3/8, 0);
+        Vector2 sideRay = Vector2.right * sideDetectionRayLengthScalar * Mathf.Sign(transform.localScale[0]);
+        RaycastHit2D sideInfo = Physics2D.Raycast(sideRayStart, sideRay, sideDetectionRayLengthScalar, whatIsGround);
+        Debug.DrawRay(sideRayStart, sideRay, Color.red);
+        Debug.Log("Side info collider: " + sideInfo.collider);
+
+        if (!groundInfo.collider || sideInfo.collider)
         {
             if (movingRight)
             {
@@ -86,7 +95,6 @@ public class Patrol : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Enemy: OnTriggerEnter2D");
             loseText.GetComponent<Text>().enabled = true;
             Destroy(collision.gameObject);
             cameraObject.GetComponent<CameraMover>().movementSpeed = 0;

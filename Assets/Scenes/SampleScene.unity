@@ -132,8 +132,8 @@ GameObject:
   - component: {fileID: 382671301}
   - component: {fileID: 382671300}
   m_Layer: 8
-  m_Name: LoseText
-  m_TagString: LoseText
+  m_Name: LossText
+  m_TagString: LossText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
