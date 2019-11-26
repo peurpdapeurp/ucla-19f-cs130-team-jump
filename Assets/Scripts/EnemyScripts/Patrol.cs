@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Patrol : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class Patrol : MonoBehaviour
     public void Start()
     {
         cameraObject = GameObject.Find("MainCamera");
-        loseText = GameObject.Find("LoseText");
+        loseText = GameObject.Find("LossText");
+        loseText.GetComponent<Text>().enabled = false;
         renderer = gameObject.GetComponent<Renderer>();
         topRightCorner = renderer.bounds.max;
         bottomLeftCorner = renderer.bounds.min;
@@ -85,7 +87,7 @@ public class Patrol : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Enemy: OnTriggerEnter2D");
-            loseText.SetActive(true);
+            loseText.GetComponent<Text>().enabled = true;
             Destroy(collision.gameObject);
             cameraObject.GetComponent<CameraMover>().movementSpeed = 0;
         }

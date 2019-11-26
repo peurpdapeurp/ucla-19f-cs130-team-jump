@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\EnemyScripts\JumpingPatrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\Patrol.cs" />
     <Compile Include="Assets\Scripts\EnemyScripts\WallWalkingPatrol.cs" />
+    <Compile Include="Assets\Scripts\EnvironmentGenerationScripts\EnvironmentSlice.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />

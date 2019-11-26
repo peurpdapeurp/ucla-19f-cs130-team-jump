@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraTriggerEvent : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class CameraTriggerEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        loseText.SetActive(false);
+        loseText.GetComponent<Text>().enabled = false;
     }
 
     // Update is called once per frame
@@ -25,7 +26,7 @@ public class CameraTriggerEvent : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("OnTriggerExit2D");
-            loseText.SetActive(true);
+            loseText.GetComponent<Text>().enabled = true;
             Destroy(collision.gameObject);
             cameraMover.movementSpeed = 0;
         }
