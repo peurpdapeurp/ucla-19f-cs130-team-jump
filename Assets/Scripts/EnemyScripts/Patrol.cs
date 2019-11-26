@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Patrol : MonoBehaviour
 {
-    public GameObject loseText;
-    public GameObject cameraObject;
     public float speed = 5f;
     public LayerMask whatIsGround;
     private float groundDetectionXOffset;
@@ -23,9 +21,6 @@ public class Patrol : MonoBehaviour
 
     public void Start()
     {
-        cameraObject = GameObject.Find("MainCamera");
-        loseText = GameObject.Find("LossText");
-        loseText.GetComponent<Text>().enabled = false;
         renderer = gameObject.GetComponent<Renderer>();
         topRightCorner = renderer.bounds.max;
         bottomLeftCorner = renderer.bounds.min;
@@ -95,9 +90,8 @@ public class Patrol : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            loseText.GetComponent<Text>().enabled = true;
-            Destroy(collision.gameObject);
-            cameraObject.GetComponent<CameraMover>().movementSpeed = 0;
+            PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            playerHealth.applyDamage();
         }
     }
 }

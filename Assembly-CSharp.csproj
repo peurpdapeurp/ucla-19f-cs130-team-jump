@@ -71,10 +71,14 @@
     <Compile Include="Assets\Scripts\EnemyScripts\WallWalkingPatrol.cs" />
     <Compile Include="Assets\Scripts\EnvironmentGenerationScripts\EnvironmentSlice.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\CharacterController2D.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
     <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
@@ -91,6 +95,12 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.multiplayer-weaver.Editor">
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
@@ -100,32 +110,23 @@
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
       <HintPath>C:/Users/edwar/Desktop/ucla-19f-cs130-team-jump/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
