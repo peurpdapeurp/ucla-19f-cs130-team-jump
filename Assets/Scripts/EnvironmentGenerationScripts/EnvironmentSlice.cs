@@ -56,9 +56,10 @@ public class EnvironmentSlice : MonoBehaviour
     /// <summary>
     /// Create different number of enemies based on the slice that was generated.
     /// </summary>
-    private const int kMaxNumberEnemiesPerLowLevelSlice = 20;
-    private const int kMaxNumberEnemiesPerMediumLevelSlice = 15;
-    private const int kMaxNumberEnemiesPerHighLevelSlice = 20;
+    private const int kMinNumberEnemiesPerSlice = 3;
+    private const int kMaxNumberEnemiesPerLowLevelSlice = 4;
+    private const int kMaxNumberEnemiesPerMediumLevelSlice = 6;
+    private const int kMaxNumberEnemiesPerHighLevelSlice = 8;
 
     /// <summary>
     /// Enemy type strings
@@ -201,7 +202,7 @@ public class EnvironmentSlice : MonoBehaviour
             maxNumEnemies = kMaxNumberEnemiesPerHighLevelSlice;
         }
 
-        int numberEnemiesToSpawn = randomGenerator.Next(1, maxNumEnemies);
+        int numberEnemiesToSpawn = randomGenerator.Next(kMinNumberEnemiesPerSlice, maxNumEnemies);
         for (int i = 0; i < numberEnemiesToSpawn; ++i)
         {
             string enemyPrefabString = getRandomEnemyPrefabString();
@@ -242,8 +243,6 @@ public class EnvironmentSlice : MonoBehaviour
                         break;
                     }
             }
-
-            
         }
     }
 
