@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentHealthText = GameObject.Find("CurrentHealth");
-        currentHealthText.GetComponent<Text>().text = "Current health: " + currentHealth;
+        currentHealthText.GetComponent<Text>().text = "Health: " + currentHealth;
         cameraObject = GameObject.Find("MainCamera");
         loseText = GameObject.Find("LossText");
         loseText.GetComponent<Text>().enabled = false;
@@ -31,18 +31,30 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
+
         currentHealth--;
-        currentHealthText.GetComponent<Text>().text = "Current health: " + currentHealth;
-        if (currentHealth == 0)
+        player.GetComponent<PlayerParticle>().Flash();
+
+        if (currentHealth <= 0)
         {
             cameraObject.GetComponent<CameraMover>().movementSpeed = 0;
             loseText.GetComponent<Text>().enabled = true;
-            Destroy(player);
+            currentHealthText.GetComponent<Text>().enabled = false;
         }
+        else
+            currentHealthText.GetComponent<Text>().text = "Health: " + currentHealth;
+
         lastDamageTime = Time.time;
     }
     public int getCurrentHealth()
     {
         return currentHealth;
+    }
+    
+    public void cameraKill()
+    {
+        currentHealth = 0;
+        invulnerabilityPeriodSeconds = 0;
+        applyDamage();
     }
 }

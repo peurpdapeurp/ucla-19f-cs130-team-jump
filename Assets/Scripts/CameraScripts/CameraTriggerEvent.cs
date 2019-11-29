@@ -27,8 +27,8 @@ public class CameraTriggerEvent : MonoBehaviour
         {
             Debug.Log("OnTriggerExit2D");
             loseText.GetComponent<Text>().enabled = true;
-            Destroy(collision.gameObject);
-            cameraMover.movementSpeed = 0;
+            GameObject.Find("Player").GetComponent<PlayerHealth>().cameraKill();
+            cameraMover.movementSpeed = 0;          
         }
     }
 }
