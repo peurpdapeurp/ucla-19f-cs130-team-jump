@@ -13,20 +13,19 @@ public class EnemyTriggerEvent : MonoBehaviour
         loseText.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Enemy: OnTriggerEnter2D");
-            loseText.SetActive(true);
-            Destroy(collision.gameObject);
-            cameraObject.GetComponent<CameraMover>().movementSpeed = 0;
+                     
+            if (collision.gameObject.GetComponent<PlayerParticle>().Health() < 0)
+            {
+                loseText.SetActive(true);
+                cameraObject.GetComponent<CameraMover>().movementSpeed = 0;
+            }
+            else
+                collision.gameObject.GetComponent<PlayerParticle>().Flash();
         }
     }
 

@@ -14,20 +14,22 @@ public class CameraTriggerEvent : MonoBehaviour
         loseText.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             Debug.Log("OnTriggerExit2D");
-            loseText.SetActive(true);
-            Destroy(collision.gameObject);
-            cameraMover.movementSpeed = 0;
+
+            if (collision.gameObject.GetComponent<PlayerParticle>().Health() < 0)
+            {
+                loseText.SetActive(true);
+                cameraMover.movementSpeed = 0;
+            }
+            else
+            {
+                collision.gameObject.GetComponent<PlayerParticle>().Flash();
+                collision.gameObject.GetComponent<PlayerParticle>().Kill();
+            }
         }
     }
 }

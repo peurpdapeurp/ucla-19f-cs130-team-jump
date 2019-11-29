@@ -6,6 +6,7 @@ Shader "Shader/PostProcessingShader"
     {
         _MainTex ("Texture", 2D) = "white" {}
 		_PlayerPos("Player position", vector) = (0.0, 0.0, 0.0, 0.0)
+		_BlurSize("Blur Size", Range(0,0.1)) = 0
 
     }
     SubShader
@@ -22,6 +23,8 @@ Shader "Shader/PostProcessingShader"
             #pragma fragment frag
 
             #include "UnityCG.cginc"
+
+			#define SAMPLES 10
 
             struct appdata
             {
@@ -46,6 +49,8 @@ Shader "Shader/PostProcessingShader"
 
             sampler2D _MainTex;
 			float3 _PlayerPos;
+			int _Blur;
+			float _BlurSize;
 			float _Radius;
 
             fixed4 frag (v2f i) : SV_Target
@@ -63,15 +68,33 @@ Shader "Shader/PostProcessingShader"
 				float dist_x = pow( (_ScreenParams.x * _PlayerPos.x - x), 2.0f);
 				float dist_y = pow( (_ScreenParams.y * _PlayerPos.y - y), 2.0f);
 				float dist = dist_x + dist_y;
+
 				//GREYSCALE
-				if (dist > threshold)
+				if (!_Blur && dist > threshold)
 				{
 					float intensity = 0.2126f * col.r + 0.7152f * col.g + 0.0722 * col.b;
 					col = fixed4(intensity, intensity, intensity, 1.0f);
+					return col;
 				}
-				//col *= dist; 
+
+				//X BLUR 
+				if (_Blur && dist > threshold)
+				{
+					float sqrt_dist = sqrt(dist_x);
+					_BlurSize *= sqrt_dist / 500.0f;
+
+					float invAspect = _ScreenParams.y / _ScreenParams.x;
+					for (float index = 0; index < SAMPLES; index++)
+					{
+						float offset = (index / (SAMPLES - 1) - 0.5f) * _BlurSize * invAspect;
+						float2 uv = i.uv + float2(offset, 0);
+						col += tex2D(_MainTex, uv);
+					}
+					return col / SAMPLES;
+				}
+
 				return col;
-            }
+			}
             ENDCG
         }
     }

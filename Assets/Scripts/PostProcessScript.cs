@@ -33,8 +33,9 @@ public class PostProcessScript : MonoBehaviour
         if (player != null && cam != null)
         {
             mat.SetVector("_PlayerPos", cam.WorldToViewportPoint(player.transform.position));
+            mat.SetFloat("_BlurSize", 0.02f);
 
-            int health = 0;
+            int health = player.GetComponent<PlayerParticle>().Health();
             float radius;
 
             switch (health)
@@ -54,12 +55,20 @@ public class PostProcessScript : MonoBehaviour
                     radius = Mathf.Sin(time);
                     break;
                 default:
-                    radius = 1.0f;
+                    radius = 0.0f;
+                    mat.SetFloat("_BlurSize", 0.0f);
+                    Destroy(GameObject.Find("Player"));
                     break;
 
             }
             mat.SetFloat("_Radius", radius);
         }
-        Graphics.Blit(src, dest, mat);
+        var temporaryTexture = RenderTexture.GetTemporary(src.width, src.height);
+
+        mat.SetInt("_Blur", 0);
+        Graphics.Blit(src, temporaryTexture, mat);
+        mat.SetInt("_Blur", 1);
+        Graphics.Blit(temporaryTexture, dest, mat);
+        RenderTexture.ReleaseTemporary(temporaryTexture);
     }
 }
