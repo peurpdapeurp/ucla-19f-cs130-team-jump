@@ -57,9 +57,9 @@ public class EnvironmentSlice : MonoBehaviour
     /// Create different number of enemies based on the slice that was generated.
     /// </summary>
     private const int kMinNumberEnemiesPerSlice = 3;
-    private const int kMaxNumberEnemiesPerLowLevelSlice = 4;
-    private const int kMaxNumberEnemiesPerMediumLevelSlice = 6;
-    private const int kMaxNumberEnemiesPerHighLevelSlice = 8;
+    private const int kMaxNumberEnemiesPerLowLevelSlice = 8;
+    private const int kMaxNumberEnemiesPerMediumLevelSlice = 16;
+    private const int kMaxNumberEnemiesPerHighLevelSlice = 16;
 
     /// <summary>
     /// Enemy type strings
@@ -68,6 +68,8 @@ public class EnvironmentSlice : MonoBehaviour
     private const string enemyPrefabStringWallWalking = "Enemies/BasicWallWalkingEnemy";
     private const string enemyPrefabStringJumping = "Enemies/BasicJumpingEnemy";
     private const string enemyPrefabStringTerrain = "Enemies/BasicTerrainEnemy";
+
+    private const string powerupsString = "Enemies/Coin";
 
     // The number of slices there are per level.
     private const int kMaxNumOfLevelSlices = 3;
@@ -236,10 +238,21 @@ public class EnvironmentSlice : MonoBehaviour
                     }
                 case enemyPrefabStringTerrain:
                     {
+                        //Debug.Log("Terrain populated");
                         int listIndex = randomGenerator.Next(locations.Count);
                         Instantiate(enemy, locations[listIndex], Quaternion.Euler(0, 0, 0));
                         // Don't instantiate at same place;
                         locations.RemoveAt(listIndex);
+                        break;
+                    }
+                case powerupsString:
+                    {
+                        //Debug.Log("Coin populated");
+                        int listIndex = randomGenerator.Next(locations.Count);
+                        Instantiate(enemy, locations[listIndex], Quaternion.Euler(0, 0, 0));
+                        // Don't instantiate at same place;
+                        locations.RemoveAt(listIndex);
+                        
                         break;
                     }
             }
@@ -288,7 +301,7 @@ public class EnvironmentSlice : MonoBehaviour
 
     private string getRandomEnemyPrefabString()
     {
-        switch (randomGenerator.Next(4))
+        switch (randomGenerator.Next(5))
         {
             case 0:
                 {
@@ -305,6 +318,10 @@ public class EnvironmentSlice : MonoBehaviour
             case 3:
                 {
                     return enemyPrefabStringWallWalking;
+                }
+            case 4:
+                {
+                    return powerupsString;
                 }
             default:
                 {
