@@ -8,7 +8,9 @@ public class PowerUp : MonoBehaviour
     public GameObject ES;
     public GameObject Camera;
 
-    static public int counter = 0;
+    //static public int counter = 0;
+
+    //private System.Random randomGenerator;
 
     private void Start()
     {
@@ -31,27 +33,42 @@ public class PowerUp : MonoBehaviour
         EnvironmentSlice ES_Scipt = ES.GetComponent<EnvironmentSlice>();
         CameraMover CM = Camera.GetComponent<CameraMover>();
         //Debug.Log("Powerup picked up!");
-        if (counter == 0)
+
+        myAS.pitch = Random.Range(0.7f, 1.3f);
+
+        if(myAS.pitch < 0.9)
         {
-            myAS.pitch = 1.2f;
+            ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Low);
+            CM.movementSpeed = 0.1f;
+        }
+        else if(myAS.pitch > 1.1)
+        {
             ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.High);
             CM.movementSpeed = 0.13f;
-            counter++;
         }
-        else if (counter == 1)
+        else
         {
-            myAS.pitch = 0.8f;
             ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Medium);
-            CM.movementSpeed = 0.1f;
-            counter++;
-        }
-        else if (counter == 2)
-        {
-            myAS.pitch = 1f;
-            ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Low);
             CM.movementSpeed = 0.115f;
-            counter = 0;
         }
+        //if (counter != 2)
+        //{
+        //    counter++;
+        //}
+        //else if (counter == 1)
+        //{
+        //    myAS.pitch = 1f;
+        //    ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Medium);
+        //    CM.movementSpeed = 0.1f;
+        //    counter++;
+        //}
+        //else if (counter == 2)
+        //{
+        //    myAS.pitch = 0.8f;
+        //    ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Low);
+        //    CM.movementSpeed = 0.115f;
+        //    counter = 0;
+        //}
        
         //theAS.pitch = 2;
         //Debug.Log(counter);
