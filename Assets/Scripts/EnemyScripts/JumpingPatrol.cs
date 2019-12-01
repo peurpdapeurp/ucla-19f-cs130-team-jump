@@ -7,6 +7,7 @@ public class JumpingPatrol : Patrol
 {
     public float jumpForce = 4000f;
     public float maxJumpInterval = 5;
+    public Animator animator;
 
     private float forceScalar = 500f;
     private bool grounded;
@@ -66,12 +67,16 @@ public class JumpingPatrol : Patrol
         else if (groundInfoRight.collider) 
             normal = new Vector2(-1, 0);
         else if (groundInfoTop.collider)
-            normal = new Vector2(0, -1);
+        {
+            rigidbody2D.AddForce(new Vector2(0, -1), ForceMode2D.Impulse);
+            //normal = new Vector2(0, -1);
+        }
         Debug.DrawRay(transform.position, normal);
         if (grounded)
         {
             //rigidbody2D.gravityScale = 0f;
             GetComponent<Rigidbody2D>().AddForce(forceScalar * (-1 * GetComponent<Rigidbody2D>().mass * normal));
+            animator.SetBool("IsJumping", false);
         }
         /*
         else
@@ -79,6 +84,14 @@ public class JumpingPatrol : Patrol
             rigidbody2D.gravityScale = gravityForce;
         }
         */
+        if ((gameObject.GetComponent<Rigidbody2D>().velocity.y < -0.75f))
+        {
+            animator.SetBool("IsFalling", true);
+        }
+        else
+        {
+            animator.SetBool("IsFalling", false);
+        }
     }
 
     /**
@@ -117,7 +130,17 @@ public class JumpingPatrol : Patrol
                         0);
                 Debug.Log("normal: " + normal);
                 Debug.Log("jump vector: " + jumpVector);
+                Vector3 newScale = transform.localScale;
+                if((jumpVector.x * newScale.x) > 0)
+                {
+                    newScale.x *= -1;
+                    transform.localScale = newScale;
+                }
                 rigidbody2D.AddForce(jumpVector);
+                if (jumpVector != Vector3.zero)
+                {
+                    animator.SetBool("IsJumping", true);
+                }
             }
             yield return new WaitForSeconds(Random.Range(0, maxJumpInterval));
         }

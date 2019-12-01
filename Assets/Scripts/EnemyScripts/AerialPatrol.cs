@@ -34,16 +34,18 @@ public class AerialPatrol : Patrol
         {
             if (movingDown)
             {
-                transform.eulerAngles = new Vector3(-180, 0, 0);
+                //transform.eulerAngles = new Vector3(-180, 0, 0);
+                speed *= -1;
                 movingDown = false;
             }
             
         }
-        else if (dist < 0)
+        else if (dist < -3)
         {
-            if (movingDown == false)
+            if (!movingDown)
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);
+                //transform.eulerAngles = new Vector3(0, 0, 0);
+                speed *= -1;
                 movingDown = true;
             }
         }
