@@ -136,7 +136,7 @@ MonoBehaviour:
   speed: 5
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1332
+    m_Bits: 1588
 --- !u!58 &4493594551542466447
 CircleCollider2D:
   m_ObjectHideFlags: 0
