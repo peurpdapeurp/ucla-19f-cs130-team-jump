@@ -41,6 +41,7 @@ public class Patrol : MonoBehaviour
         bottomLeftCorner = renderer.bounds.min;
         normal = transform.up;
         Move();
+        TryDeallocate();
     }
 
     /**
@@ -91,7 +92,23 @@ public class Patrol : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
+            Rigidbody2D playerRigidbody2D = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+            Vector2 knockbackVector = Vector2.up * 10.0f;
+            //playerRigidbody2D.AddForce(knockbackVector * 500f * playerRigidbody2D.mass);
+            //Debug.Log("knockbackVector: " + knockbackVector);
+            playerRigidbody2D.velocity = (knockbackVector);
             playerHealth.applyDamage();
+        }
+    }
+
+    protected void TryDeallocate()
+    {
+        var cameraXLowerBound = Camera.main.transform.position.x - (Camera.main.aspect * Camera.main.orthographicSize);
+        var cameraYLowerBound = Camera.main.transform.position.y - Camera.main.orthographicSize;
+        var cameraYUpperBound = Camera.main.transform.position.y + Camera.main.orthographicSize;
+        if((gameObject.transform.position.x < cameraXLowerBound) || (gameObject.transform.position.y < cameraYLowerBound) || (gameObject.transform.position.y > cameraYUpperBound))
+        {
+            Destroy(gameObject, 1);
         }
     }
 }

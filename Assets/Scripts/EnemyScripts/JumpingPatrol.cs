@@ -103,6 +103,7 @@ public class JumpingPatrol : Patrol
     {
         while (true)
         {
+            TryDeallocate();
             bool jump = true;
             if (grounded && jump)
             {

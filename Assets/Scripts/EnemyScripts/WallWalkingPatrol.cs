@@ -21,5 +21,6 @@ public class WallWalkingPatrol : Patrol
         GetComponent<Rigidbody2D>().AddForce(forceScalar * (-1 * GetComponent<Rigidbody2D>().mass * normal));
         Debug.DrawRay(transform.position, normal, Color.magenta);
         base.Update();
+        TryDeallocate();
     }
 }

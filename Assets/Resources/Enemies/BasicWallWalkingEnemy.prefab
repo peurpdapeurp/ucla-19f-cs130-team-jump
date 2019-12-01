@@ -176,9 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3861bf45e51ff46a803bd3e967db5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loseText: {fileID: 0}
-  cameraObject: {fileID: 0}
   speed: 5
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1588
+    m_Bits: 564

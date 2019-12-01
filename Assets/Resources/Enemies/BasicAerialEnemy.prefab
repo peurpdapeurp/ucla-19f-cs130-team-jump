@@ -133,12 +133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fac617d912b37a40b9650b98a38298c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loseText: {fileID: 0}
-  cameraObject: {fileID: 0}
   speed: 5
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1332
+    m_Bits: 52
 --- !u!58 &4493594551542466447
 CircleCollider2D:
   m_ObjectHideFlags: 0

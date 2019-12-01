@@ -47,5 +47,6 @@ public class AerialPatrol : Patrol
                 movingDown = true;
             }
         }
+        TryDeallocate();
     }
 }

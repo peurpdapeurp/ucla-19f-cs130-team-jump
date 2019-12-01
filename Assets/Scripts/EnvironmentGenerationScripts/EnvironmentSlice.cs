@@ -48,6 +48,12 @@ public class EnvironmentSlice : MonoBehaviour
     private Grid grid;
 
     /// <summary>
+    /// Holds the references of the previous/current and current/next Tilemaps for deallocation.
+    /// </summary>
+    private GameObject prevTilemap;
+    private GameObject currTilemap;
+
+    /// <summary>
     /// Offset used to check when the next slice should be generated. Used with
     /// the camera's upper bound.
     /// </summary>
@@ -97,6 +103,10 @@ public class EnvironmentSlice : MonoBehaviour
         var tileMap = clone.GetComponent<Tilemap>();
 
         GenerateEnemies(tileMap);
+        
+        Destroy(prevTilemap, 1);
+        prevTilemap = currTilemap;
+        currTilemap = clone;
     }
 
     private void CreateLowEnvironmentSlice()

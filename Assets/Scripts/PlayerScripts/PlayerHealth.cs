@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 3;
     public int invulnerabilityPeriodSeconds = 1;
+    public Animator animator;
     private int currentHealth;
     private GameObject currentHealthText;
     public GameObject loseText;
@@ -31,7 +32,8 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
-
+        animator.SetBool("IsDamaged", true);
+        Invoke("setDamageOff", 0.5f);
         currentHealth--;
         player.GetComponent<PlayerParticle>().Flash();
 
@@ -56,5 +58,10 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = 0;
         invulnerabilityPeriodSeconds = 0;
         applyDamage();
+    }
+
+    private void setDamageOff()
+    {
+        animator.SetBool("IsDamaged", false);
     }
 }

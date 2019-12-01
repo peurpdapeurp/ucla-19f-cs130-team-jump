@@ -788,6 +788,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae7e85810a47634a9d55c8aca6937ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1676595857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 83010364220753247, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 83010365466716584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676595853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a29c18dfad6bb94ebe36c7c87b7caec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1676595864
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676595853}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2187dc4f3bf0944ebb4355dec07f32f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2021560125
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,11 +875,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 83010364220753240, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+    - target: {fileID: 83010364220753247, guid: f5e7acf62c20d5649b40d9f5c51382f1,
         type: 3}
-      propertyPath: m_Layer
-      value: 8
+      propertyPath: runSpeed
+      value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 83010364220753247, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1676595864}
     - target: {fileID: 83010364220753246, guid: f5e7acf62c20d5649b40d9f5c51382f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -906,8 +942,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 83010364220753244, guid: f5e7acf62c20d5649b40d9f5c51382f1,
         type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 83010364220753244, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+        type: 3}
       propertyPath: m_WhatIsGround.m_Bits
-      value: 567
+      value: 1591
       objectReference: {fileID: 0}
     - target: {fileID: 83010364220753244, guid: f5e7acf62c20d5649b40d9f5c51382f1,
         type: 3}
@@ -919,10 +960,20 @@ PrefabInstance:
       propertyPath: m_AirControl
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 83010364220753247, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+    - target: {fileID: 83010364220753244, guid: f5e7acf62c20d5649b40d9f5c51382f1,
         type: 3}
-      propertyPath: runSpeed
-      value: 50
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1676595857}
+    - target: {fileID: 83010364220753244, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+        type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLanding
+      objectReference: {fileID: 0}
+    - target: {fileID: 83010364220753244, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+        type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 83010365531482138, guid: f5e7acf62c20d5649b40d9f5c51382f1,
         type: 3}
@@ -944,5 +995,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 83010364220753245, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67,
+        type: 3}
+    - target: {fileID: 83010364220753243, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4524045924900658289, guid: f5e7acf62c20d5649b40d9f5c51382f1,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1676595864}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5e7acf62c20d5649b40d9f5c51382f1, type: 3}
