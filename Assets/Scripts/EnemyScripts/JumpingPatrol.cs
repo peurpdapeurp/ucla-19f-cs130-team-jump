@@ -70,13 +70,15 @@ public class JumpingPatrol : Patrol
         Debug.DrawRay(transform.position, normal);
         if (grounded)
         {
-            rigidbody2D.gravityScale = 0f;
+            //rigidbody2D.gravityScale = 0f;
             GetComponent<Rigidbody2D>().AddForce(forceScalar * (-1 * GetComponent<Rigidbody2D>().mass * normal));
         }
+        /*
         else
         {
             rigidbody2D.gravityScale = gravityForce;
         }
+        */
     }
 
     /**

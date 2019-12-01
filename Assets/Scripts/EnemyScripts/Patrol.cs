@@ -26,10 +26,10 @@ public class Patrol : MonoBehaviour
         bottomLeftCorner = renderer.bounds.min;
         w = topRightCorner.x - bottomLeftCorner.x;
         h = topRightCorner.y - bottomLeftCorner.y;
-        groundDetectionXOffset = w / 2 + 0.25f * w;
+        groundDetectionXOffset = w / 2; // + 0 * w;
         groundDetectionYOffset = h / 2;
         groundDetectionRayLengthScalar = 0.5f;
-        sideDetectionRayLengthScalar = w;
+        sideDetectionRayLengthScalar = 0.5f; // w;
     }
 
     /**
@@ -50,21 +50,21 @@ public class Patrol : MonoBehaviour
      */
     public void Move()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.left * speed * Time.deltaTime);
 
-        Vector3 groundRayStart = new Vector3(transform.position[0] + groundDetectionXOffset * Mathf.Sign(normal[1]),
+        Vector3 groundRayStart = new Vector3(transform.position[0] - groundDetectionXOffset * Mathf.Sign(normal[1]),
                                              transform.position[1] - groundDetectionYOffset * Mathf.Sign(normal[1]),
                                              transform.position[2]);
         Vector2 groundRay = new Vector2(normal[0], -1 * normal[1] * groundDetectionRayLengthScalar);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundRayStart, groundRay, groundDetectionRayLengthScalar, whatIsGround);
         Debug.DrawRay(groundRayStart, groundRay, Color.red);
 
-        Vector3 sideRayStart = transform.position + new Vector3((w / 2 + w * 0.1f) * Mathf.Sign(transform.localScale[0]), -w*3/8, 0);
+        Vector3 sideRayStart = transform.position + new Vector3((w / 2 + w * 0.1f) * Mathf.Sign(transform.localScale[0]) * -1.0f, -w*3/8, 0);
         Vector2 sideRay = Vector2.right * sideDetectionRayLengthScalar * Mathf.Sign(transform.localScale[0]);
         RaycastHit2D sideInfo = Physics2D.Raycast(sideRayStart, sideRay, sideDetectionRayLengthScalar, whatIsGround);
-        Debug.DrawRay(sideRayStart, sideRay, Color.red);
+        Debug.DrawRay(sideRayStart, sideRay, Color.white);
         Debug.Log("Side info collider: " + sideInfo.collider);
-
+        
         if (!groundInfo.collider || sideInfo.collider)
         {
             if (movingRight)
