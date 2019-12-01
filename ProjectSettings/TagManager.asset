@@ -6,6 +6,10 @@ TagManager:
   tags:
   - LossText
   - CurrentHealth
+  - Enemy
+  - HighLevelTileMap
+  - LowLevelTileMap
+  - MediumLevelTileMap
   layers:
   - Default
   - TransparentFX

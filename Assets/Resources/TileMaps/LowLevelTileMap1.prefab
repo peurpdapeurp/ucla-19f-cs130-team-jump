@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2800705183261995246}
   m_Layer: 9
   m_Name: LowLevelTileMap1
-  m_TagString: Untagged
+  m_TagString: LowLevelTileMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
