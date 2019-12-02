@@ -175,7 +175,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1588
-  jumpForce: 4000
+  jumpForce: 8000
   maxJumpInterval: 5
   animator: {fileID: 4224007905220053744}
 --- !u!95 &4224007905220053744

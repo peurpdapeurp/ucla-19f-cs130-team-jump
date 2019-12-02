@@ -32,7 +32,7 @@ public class JumpingPatrol : Patrol
     /// <summary>
     /// The length of the rays the enemy uses to detect when it is against a surface.
     /// </summary>
-    private float sideDetectionRayLength = 5f;
+    private float sideDetectionRayLength = .2f;
     /// <summary>
     /// Normal vector of the enemy, set to be perpendicular to whatever wall the enemy is sticking to.
     /// </summary>
@@ -68,7 +68,7 @@ public class JumpingPatrol : Patrol
         grounded = false;
 
         Debug.DrawRay(transform.position, new Vector2(0, -sideDetectionRayLength), Color.red);
-        RaycastHit2D groundInfoBottom = Physics2D.Raycast(transform.position, 
+        RaycastHit2D groundInfoBottom = Physics2D.Raycast(transform.position - new Vector3(0, 2f, 0), 
                                                           new Vector2(0, -1),
                                                           sideDetectionRayLength, 
                                                           whatIsGround);

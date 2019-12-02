@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -929,6 +929,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerObject
       objectReference: {fileID: 0}
+    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
+        type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
+        type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
+        type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
+        type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1614616489}
+    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
+        type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLanding
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
+        type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5835292591664504942, guid: a8383f9c748994bb88f85e791364494f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -990,36 +1020,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67,
         type: 3}
-    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1614616489}
-    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnLanding
-      objectReference: {fileID: 0}
-    - target: {fileID: 5835292592153656812, guid: a8383f9c748994bb88f85e791364494f,
-        type: 3}
-      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5835292592153656810, guid: a8383f9c748994bb88f85e791364494f,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -1085,11 +1085,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 6582117746984203833, guid: 890d6d02962b9491e80be121547fc2e8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6582117746580010301, guid: 890d6d02962b9491e80be121547fc2e8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1145,16 +1140,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6582117746443064441, guid: 890d6d02962b9491e80be121547fc2e8,
-        type: 3}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6582117746443064441, guid: 890d6d02962b9491e80be121547fc2e8,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6582117746580010434, guid: 890d6d02962b9491e80be121547fc2e8,
         type: 3}
       propertyPath: orthographic
@@ -1168,12 +1153,52 @@ PrefabInstance:
     - target: {fileID: 6582117746580010300, guid: 890d6d02962b9491e80be121547fc2e8,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.50748825
+      value: 0.04281044
       objectReference: {fileID: 0}
     - target: {fileID: 6582117746580010300, guid: 890d6d02962b9491e80be121547fc2e8,
         type: 3}
       propertyPath: m_Size.x
-      value: 21.606163
+      value: 30.230755
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117746580010300, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -18.469482
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117746580010300, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 59.939514
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117746984203833, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117746443064441, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117746443064441, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117747094840109, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117747094840109, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117747094840109, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 890d6d02962b9491e80be121547fc2e8, type: 3}

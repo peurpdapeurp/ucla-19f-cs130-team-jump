@@ -23,6 +23,7 @@ public class CameraTriggerEvent : MonoBehaviour
         /// Initializes this script. Sets the loseText to be invisible.
         /// </summary>
         loseText.GetComponent<Text>().enabled = false;
+
     }
 
     public void OnTriggerExit2D(Collider2D collision)
