@@ -1165,5 +1165,15 @@ PrefabInstance:
       propertyPath: field of view
       value: 26.99147
       objectReference: {fileID: 0}
+    - target: {fileID: 6582117746580010300, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.50748825
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582117746580010300, guid: 890d6d02962b9491e80be121547fc2e8,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 21.606163
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 890d6d02962b9491e80be121547fc2e8, type: 3}

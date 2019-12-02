@@ -70,7 +70,7 @@ public class Patrol : MonoBehaviour
         groundDetectionXOffset = w / 2 + 0.25f * w;
         groundDetectionYOffset = h / 2;
         groundDetectionRayLengthScalar = 0.5f;
-        sideDetectionRayLengthScalar = w;
+        sideDetectionRayLengthScalar = 0.5f;
     }
 
 
@@ -100,7 +100,7 @@ public class Patrol : MonoBehaviour
         RaycastHit2D groundInfo = Physics2D.Raycast(groundRayStart, groundRay, groundDetectionRayLengthScalar, whatIsGround);
         Debug.DrawRay(groundRayStart, groundRay, Color.red);
 
-        Vector3 sideRayStart = transform.position + new Vector3((w / 2 + w * 0.1f) * Mathf.Sign(transform.localScale[0]), -w*3/8, 0);
+        Vector3 sideRayStart = transform.position + new Vector3(((w / 2 + w * 0.1f) * Mathf.Sign(transform.localScale[0])), -w*3/8, 0);
         Vector2 sideRay = Vector2.right * sideDetectionRayLengthScalar * Mathf.Sign(transform.localScale[0]);
         RaycastHit2D sideInfo = Physics2D.Raycast(sideRayStart, sideRay, sideDetectionRayLengthScalar, whatIsGround);
         Debug.DrawRay(sideRayStart, sideRay, Color.red);

@@ -32,7 +32,7 @@ public class JumpingPatrol : Patrol
     /// <summary>
     /// The length of the rays the enemy uses to detect when it is against a surface.
     /// </summary>
-    private float sideDetectionRayLength;
+    private float sideDetectionRayLength = 5f;
     /// <summary>
     /// Normal vector of the enemy, set to be perpendicular to whatever wall the enemy is sticking to.
     /// </summary>
@@ -42,6 +42,7 @@ public class JumpingPatrol : Patrol
     /// </summary>
     private float gravityForce = 5f;
 
+    public Animator animator;
     public void Start()
     {
         /// <summary>
@@ -96,12 +97,21 @@ public class JumpingPatrol : Patrol
         Debug.DrawRay(transform.position, normal);
         if (grounded)
         {
-            rigidbody2D.gravityScale = 0f;
+            //rigidbody2D.gravityScale = 0f;
             GetComponent<Rigidbody2D>().AddForce(forceScalar * (-1 * GetComponent<Rigidbody2D>().mass * normal));
+            animator.SetBool("IsJumping", false);
+        }
+        //else
+        //{
+        //    rigidbody2D.gravityScale = gravityForce;
+        //}
+        if ((gameObject.GetComponent<Rigidbody2D>().velocity.y < -0.75f))
+        {
+            animator.SetBool("IsFalling", true);
         }
         else
         {
-            rigidbody2D.gravityScale = gravityForce;
+            animator.SetBool("IsFalling", false);
         }
     }
 
@@ -137,7 +147,17 @@ public class JumpingPatrol : Patrol
                         0);
                 Debug.Log("normal: " + normal);
                 Debug.Log("jump vector: " + jumpVector);
+                Vector3 newScale = transform.localScale;
+                if ((jumpVector.x * newScale.x) > 0)
+                {
+                    newScale.x *= -1;
+                    transform.localScale = newScale;
+                }
                 rigidbody2D.AddForce(jumpVector);
+                if (jumpVector != Vector3.zero)
+                {
+                    animator.SetBool("IsJumping", true);
+                }
             }
             yield return new WaitForSeconds(Random.Range(0, maxJumpInterval));
         }

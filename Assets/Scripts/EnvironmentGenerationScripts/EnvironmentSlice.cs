@@ -297,33 +297,34 @@ public class EnvironmentSlice : MonoBehaviour
 
     private string getRandomEnemyPrefabString()
     {
-        switch (randomGenerator.Next(5))
-        {
-            case 0:
-                {
-                    return enemyPrefabStringAerial;
-                }
-            case 1:
-                {
-                    return enemyPrefabStringJumping;
-                }
-            case 2:
-                {
-                    return enemyPrefabStringTerrain;
-                }
-            case 3:
-                {
-                    return enemyPrefabStringWallWalking;
-                }
-            case 4:
-                {
-                    return enemyPrefabStringCoin;
-                }
-            default:
-                {
-                    return enemyPrefabStringTerrain;
-                }
-        }
+        //switch (randomGenerator.Next(5))
+        //{
+        //    case 0:
+        //        {
+        //            return enemyPrefabStringAerial;
+        //        }
+        //    case 1:
+        //        {
+        //            return enemyPrefabStringJumping;
+        //        }
+        //    case 2:
+        //        {
+        //            return enemyPrefabStringTerrain;
+        //        }
+        //    case 3:
+        //        {
+        //            return enemyPrefabStringWallWalking;
+        //        }
+        //    case 4:
+        //        {
+        //            return enemyPrefabStringCoin;
+        //        }
+        //    default:
+        //        {
+        //            return enemyPrefabStringTerrain;
+        //        }
+        //}
+        return enemyPrefabStringCoin;
     }
 
     private bool ShouldGenerateSlice()

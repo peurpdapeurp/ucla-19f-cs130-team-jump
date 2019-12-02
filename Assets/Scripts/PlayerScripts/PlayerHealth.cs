@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject player;
     public GameObject timerText;
     private float lastDamageTime = 0f;
+    public GameObject audioManager;
 
     public void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
         loseText.GetComponent<Text>().enabled = false;
         timerText = GameObject.Find("TimerText");
         player = GameObject.Find("Player");
+        audioManager = GameObject.Find("AudioManager");
     }
 
     public void applyDamage()
@@ -47,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
             loseText.GetComponent<Text>().text =
                 "WASTED" + "\n" +
                 "You lasted " + Mathf.Round(timerText.GetComponent<Timer>().currentTime) + " seconds.";
+            audioManager.GetComponent<AudioSource>().Stop();
         }
         else
             currentHealthText.GetComponent<Text>().text = "Health: " + currentHealth;
