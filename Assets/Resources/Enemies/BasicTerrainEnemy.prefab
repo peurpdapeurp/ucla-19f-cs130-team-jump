@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7628504785024705500}
   - component: {fileID: 2800625115694550880}
   - component: {fileID: 3038324664034689534}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: BasicTerrainEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

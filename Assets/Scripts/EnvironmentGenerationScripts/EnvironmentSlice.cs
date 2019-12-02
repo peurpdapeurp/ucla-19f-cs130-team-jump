@@ -143,6 +143,7 @@ public class EnvironmentSlice : MonoBehaviour
     {
         currMax.x += 15.5f;
         currMax.y = 0.0f;
+        currMax.z = 0.0f;
     }
 
     private void UpdateEnvironment()
@@ -223,7 +224,7 @@ public class EnvironmentSlice : MonoBehaviour
                 case enemyPrefabStringAerial:
                     {
                         int listIndex = randomGenerator.Next(locations.Count);
-                        Instantiate(enemy, locations[listIndex], Quaternion.Euler(0, 0, 0));
+                        Instantiate(enemy, locations[listIndex] + (new Vector3(0, 0, -1)), Quaternion.Euler(0, 0, 0));
                         // Don't instantiate at same place;
                         locations.RemoveAt(listIndex);
                         break;

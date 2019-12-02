@@ -11,7 +11,7 @@ public class CameraMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Camera.main.transparencySortMode = TransparencySortMode.Orthographic;
     }
 
     // Update is called once per frame

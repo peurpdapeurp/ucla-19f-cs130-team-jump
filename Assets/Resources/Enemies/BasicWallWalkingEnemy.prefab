@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1772463815153282504}
   - component: {fileID: 7775345911870258616}
   - component: {fileID: 2084306024620718336}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: BasicWallWalkingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
