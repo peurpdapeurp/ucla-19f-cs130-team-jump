@@ -10,7 +10,7 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 
-	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
+	const float k_GroundedRadius = .4f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
@@ -44,19 +44,27 @@ public class CharacterController2D : MonoBehaviour
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-		for (int i = 0; i < colliders.Length; i++)
-		{
-			if (colliders[i].gameObject != gameObject)
-			{
-				m_Grounded = true;
-				if (!wasGrounded)
-					OnLandEvent.Invoke();
-			}
-		}
-	}
+        //// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+        //// This can be done using layers instead but Sample Assets will not overwrite your project settings.
+        //Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+        //for (int i = 0; i < colliders.Length; i++)
+        //{
+        //	if (colliders[i].gameObject != gameObject)
+        //	{
+        //		m_Grounded = true;
+        //		if (!wasGrounded)
+        //			OnLandEvent.Invoke();
+        //	}
+        //}
+        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, Vector2.down, 4f, m_WhatIsGround);
+        Debug.DrawRay(transform.position + new Vector3(0f, -4f, 0f), Vector2.down);
+        if (rayHit.collider)
+        {
+            		m_Grounded = true;
+            		if (!wasGrounded)
+            			OnLandEvent.Invoke();
+        }
+    }
 
 
 	public void Move(float move, bool crouch, bool jump)
@@ -109,6 +117,7 @@ public class CharacterController2D : MonoBehaviour
 		// If the player should jump...
 		if (m_Grounded && jump)
 		{
+            Debug.Log("Jumping");
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
