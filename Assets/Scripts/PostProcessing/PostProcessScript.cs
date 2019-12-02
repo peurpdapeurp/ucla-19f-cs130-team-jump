@@ -6,13 +6,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// <para> Script that is called by the Camera object after it renders a frame, so that performs PostProcessing before displaying the frame </para>  	
 /// </summary>
-/// <param name="mat"> The material on which to display the resulting image, a planar screen spanning the Camera's view </param>
-/// <param name="mat.shader"> The Shader program bound to the material, shader program that processes pictures displayed onto the material </param>
-/// <param name="src"> The color buffer holding the frame after the camera initially renders the scene </param>
-/// <param name="dest"> The buffer in which the post processed image will be stored, what is ultimately displayed onto the screen  </param>
-/// <param name="player.health"> Health Points of the player, so can apply graphical effects depending on the player's health </param>
-/// <param name="player.transform.position"> Where the player is in the world space </param> 
-/// <param name="camera"> Reference to the Camera Object, so can extract its projection matrix and situate the player onto the screen </param> 
+
 
 public class PostProcessScript : MonoBehaviour
 {
@@ -33,12 +27,28 @@ public class PostProcessScript : MonoBehaviour
 
     public void Start()
     {
+        /// <summary>
+        /// <para> Funtion that initializes the camera, player and material references to their default value </para>  	
+        /// </summary>
+        /// <param name="mat"> The material on which to display the resulting image, a planar screen spanning the Camera's view </param>
+        /// <param name="mat.shader"> The Shader program bound to the material, shader program that processes pictures displayed onto the material </param>
+        /// <param name="camera"> Reference to the Camera Object, so can extract its projection matrix and situate the player onto the screen </param> 
+        /// <param name="camera"> Reference to the Player Object, so can later extract its position and health points </param>
+        /// 
+
         player = GameObject.Find("Player");
         cam = GetComponent<Camera>();
     }
 
     public void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
+        ///<summary> Function called by the camera every time it finished rendered a frame. Transforms applies the PostProcessing shader to src and return the final picture to dest. </summary>
+        /// <param name="src"> The color buffer holding the frame after the camera initially renders the scene </param>
+        /// <param name="dest"> The buffer in which the post processed image will be stored, what is ultimately displayed onto the screen  </param>
+
+        /// <param name="player.PlayerHealth()"> Script to call for Health Points of the player, so can apply graphical effects depending on the player's health </param>
+        /// <param name="player.transform.position"> Where the player is in the world space so can do greyscale relative to player position </param> 
+
 
         //src is color buffer
         if (player != null && cam != null)
