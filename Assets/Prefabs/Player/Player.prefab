@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 83010364220753242}
   - component: {fileID: 83010364220753241}
   - component: {fileID: 83010364220753247}
+  - component: {fileID: 1700202554409837540}
   - component: {fileID: 4524045924900658289}
   - component: {fileID: 4093187361285834796}
   m_Layer: 0
@@ -197,6 +198,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 83010364220753244}
   runSpeed: 100
+--- !u!114 &1700202554409837540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83010364220753240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abdb7f40bba4b624ea20c01e89e4a350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedBonus: 50
+  speedBonusDuration: 5
 --- !u!114 &4524045924900658289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +225,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  invulnerabilityPeriodSeconds: 1
+  loseText: {fileID: 0}
+  cameraObject: {fileID: 0}
+  player: {fileID: 0}
+  timerText: {fileID: 0}
 --- !u!222 &4093187361285834796
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -217,7 +237,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83010364220753240}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
 --- !u!1 &83010364267738945
 GameObject:
   m_ObjectHideFlags: 0

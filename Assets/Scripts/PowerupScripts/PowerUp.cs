@@ -53,7 +53,6 @@ public class PowerUp : MonoBehaviour
     /// </summary>
     private void Pickup(Collider2D collision)
     {
-        ModifyPlayerSpeed(collision);
 
         AudioSource myAS = theAM.GetComponent<AudioSource>();
         EnvironmentSlice ES_Scipt = ES.GetComponent<EnvironmentSlice>();
@@ -77,6 +76,8 @@ public class PowerUp : MonoBehaviour
             ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Medium);
             CM.movementSpeed = 0.115f;
         }
+
+        ModifyPlayerSpeed(collision);
 
         Destroy(gameObject);
     }
