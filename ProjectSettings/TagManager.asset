@@ -12,6 +12,7 @@ TagManager:
   - MediumLevelTileMap
   - Audio
   - EnvironmentSliceGenerator
+  - TimerText
   layers:
   - Default
   - TransparentFX
