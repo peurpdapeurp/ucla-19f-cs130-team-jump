@@ -39,7 +39,7 @@ public class PowerUp : MonoBehaviour
     /// <summary>
     /// <para> Function that make changes to BGM's pitch, generator of environment slice, and the moving speed of the camera </para>
     /// </summary>
-    void Pickup()
+    private void Pickup()
     {
         AudioSource myAS = theAM.GetComponent<AudioSource>();
         EnvironmentSlice ES_Scipt = ES.GetComponent<EnvironmentSlice>();
