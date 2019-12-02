@@ -12,6 +12,9 @@ public class PowerUp : MonoBehaviour
     public GameObject ES;
     public GameObject Camera;
 
+    public float speedBonus = 20f;
+    public int speedBonusDuration = 5;
+
     /// <summary>
     /// <para> Function that retrieves game objects needed to modify game elements including audio pitch, environment slice generation, and moving speed of the main camera </para>
     /// 
@@ -32,15 +35,26 @@ public class PowerUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Pickup();
+            Pickup(collision);
         }
+    }
+
+    /// <summary>
+    /// <para> Function that modifies player's speed
+    /// </para>
+    /// </summary>
+    private void ModifyPlayerSpeed(Collider2D collision)
+    {
+        collision.GetComponent<Speeding>().GetSpeedUpgrade(speedBonus, speedBonusDuration);
     }
 
     /// <summary>
     /// <para> Function that make changes to BGM's pitch, generator of environment slice, and the moving speed of the camera </para>
     /// </summary>
-    private void Pickup()
+    private void Pickup(Collider2D collision)
     {
+        ModifyPlayerSpeed(collision);
+
         AudioSource myAS = theAM.GetComponent<AudioSource>();
         EnvironmentSlice ES_Scipt = ES.GetComponent<EnvironmentSlice>();
         CameraMover CM = Camera.GetComponent<CameraMover>();
