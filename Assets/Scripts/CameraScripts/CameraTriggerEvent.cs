@@ -23,6 +23,11 @@ public class CameraTriggerEvent : MonoBehaviour
         /// Initializes this script. Sets the loseText to be invisible.
         /// </summary>
         loseText.GetComponent<Text>().enabled = false;
+
+        float halfHeight = Camera.main.orthographicSize;
+        float halfWidth = Camera.main.aspect * halfHeight;
+
+        Camera.main.GetComponent<BoxCollider2D>().size = new Vector2(halfWidth * 2, halfHeight * 2);
     }
 
     public void OnTriggerExit2D(Collider2D collision)
