@@ -10,6 +10,8 @@ TagManager:
   - HighLevelTileMap
   - LowLevelTileMap
   - MediumLevelTileMap
+  - Audio
+  - EnvironmentSliceGenerator
   layers:
   - Default
   - TransparentFX
