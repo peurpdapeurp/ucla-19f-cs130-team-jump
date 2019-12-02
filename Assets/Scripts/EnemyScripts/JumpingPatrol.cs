@@ -3,41 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// <para> Script used to control behavior of jumping enemies. </para>  	
+/// </summary>
 public class JumpingPatrol : Patrol
 {
+    /// <summary>
+    /// The force with which the enemy jumps.
+    /// </summary>
     public float jumpForce = 4000f;
+    /// <summary>
+    /// The maximum interval between jumps.
+    /// </summary>
     public float maxJumpInterval = 5;
 
+    /// <summary>
+    /// The force with which the enemy is pushed against walls it is sticking to.
+    /// </summary>
     private float forceScalar = 500f;
+    /// <summary>
+    /// Whether or not the enemy is sticking against a wall.
+    /// </summary>
     private bool grounded;
+    /// <summary>
+    /// The enemy's rigidBody2D, used to apply force to the enemy to make it jump.
+    /// </summary>
     private Rigidbody2D rigidbody2D;
+    /// <summary>
+    /// The length of the rays the enemy uses to detect when it is against a surface.
+    /// </summary>
     private float sideDetectionRayLength;
+    /// <summary>
+    /// Normal vector of the enemy, set to be perpendicular to whatever wall the enemy is sticking to.
+    /// </summary>
     private Vector2 normal;
+    /// <summary>
+    /// The force of gravity which affects the enemy.
+    /// </summary>
     private float gravityForce = 5f;
-
-    /**
-     * \brief The Awake function starts the jumping loop through the JumpRoutine coroutine.
-     */
-    public void Awake()
-    {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        StartCoroutine(JumpRoutine());
-        rigidbody2D.mass = 3f;
-        rigidbody2D.gravityScale = gravityForce;
-    }
 
     public void Start()
     {
+        /// <summary>
+        /// Start function initializes the jumping enemy. Calls Patrol's start, and also sets the length of the jumping enemy's
+        /// side detection rays. Starts the enemy's jumping coroutine.
+        /// </summary>
         base.Start();
         sideDetectionRayLength = (h / 2) + (0.05f * h);
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D.mass = 3f;
+        rigidbody2D.gravityScale = gravityForce;
+
+        StartCoroutine(JumpRoutine());
     }
 
-    /**
-     * \brief The FixedUpdate function periodically checks if the object is in contact with any surface, and sets m_Grounded to true
-     * if it is.
-     */
     public void FixedUpdate()
     {
+        /// <summary>
+        /// The FixedUpdate function periodically checks if the object is in contact with any surface, and sets m_Grounded to true
+        /// if it is.
+        /// </summary>
+        
         grounded = false;
 
         Debug.DrawRay(transform.position, new Vector2(0, -sideDetectionRayLength), Color.red);
@@ -84,23 +110,20 @@ public class JumpingPatrol : Patrol
      */
     public void Update()
     {
+        /// <summary>
+        /// Does nothing. Overrides the Update function of the Patrol script, since the jumping patrol does not use the Update
+        /// function to move.
+        /// </summary>
     }
 
-    /**
-     * \brief The move function does nothing.
-     */
-    public void Move()
-    {
-        
-    }
 
-    /**
-     * \brief A coroutine which periodically makes the object jump if it is grounded. The object will attempt to jump at an interval from 
-     * 0 to m_MaxJumpInterval seconds. The object will randomly jump either to the left, straight up, or to the right. The object
-     * will not jump if it is not in contact with a surface (i.e. m_Grounded is false).
-     */
-    IEnumerator JumpRoutine()
+    public IEnumerator JumpRoutine()
     {
+        /// <summary>
+        /// A coroutine which periodically makes the object jump if it is grounded. The object will attempt to jump at an interval from 
+        /// 0 to m_MaxJumpInterval seconds.The object will randomly jump either to the left, straight up, or to the right. The object
+        /// will not jump if it is not in contact with a surface(i.e.m_Grounded is false).
+        /// </summary>
         while (true)
         {
             bool jump = true;

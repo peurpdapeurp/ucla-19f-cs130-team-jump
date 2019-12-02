@@ -3,22 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// <para> Script that is called by the TimerText game object, to keep track of player's survival time. </para>  	
+/// </summary>
+
 public class Timer : MonoBehaviour
 {
+    /// <summary>
+    /// Reference to the object which displays the timer to the user.
+    /// </summary>
     GameObject timerText;
+    /// <summary>
+    /// The current time in seconds.
+    /// </summary>
     public float currentTime;
+    /// <summary>
+    /// Whether or not the timer has been stopped.
+    /// </summary>
     private bool stopped;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        /// <summary>
+        /// <para> Function to initialize the timer. Finds the timerText object and initializes currentTime to 0. </para>  	
+        /// </summary>
+
         timerText = GameObject.FindGameObjectWithTag("TimerText");
         currentTime = 0.0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
+        /// <summary>
+        /// <para> Function that that updates the timer. Increments the currentTime so that it reflects 
+        /// how long the player has survived, and displays it through the timerText object. </para>  	
+        /// </summary>
+        /// 
         if (!stopped)
             currentTime += Time.deltaTime;
         timerText.GetComponent<Text>().text = "Current time: " + Mathf.Round(currentTime);
@@ -26,6 +47,10 @@ public class Timer : MonoBehaviour
 
     public void StopTimer()
     {
+        /// <summary>
+        /// <para> Function that stops the timer. </para>  	
+        /// </summary>
+        /// 
         stopped = true;
     }
 }

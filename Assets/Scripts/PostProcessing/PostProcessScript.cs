@@ -13,8 +13,18 @@ public class PostProcessScript : MonoBehaviour
 
     private float radius;
 
+    /// <summary>
+    ///  Reference to the Player Object, so can later extract its position and health points
+    /// </summary>
     public GameObject player;
+    /// <summary>
+    /// Reference to the Camera Object, so can extract its projection matrix and situate the player onto the screen
+    /// </summary>
     public Camera cam;
+    /// <summary>
+    /// The material on which to display the resulting image, a planar screen spanning the Camera's view.
+    /// mat.shader is the shader program bound to the material, shader program that processes pictures displayed onto the material
+    /// </summary>
     public Material mat;
 
     public const float kFullHealthRadius = 1.0f;
@@ -28,14 +38,8 @@ public class PostProcessScript : MonoBehaviour
     public void Start()
     {
         /// <summary>
-        /// <para> Funtion that initializes the camera, player and material references to their default value </para>  	
+        /// Function to start post processing. Finds the player and camera.
         /// </summary>
-        /// <param name="mat"> The material on which to display the resulting image, a planar screen spanning the Camera's view </param>
-        /// <param name="mat.shader"> The Shader program bound to the material, shader program that processes pictures displayed onto the material </param>
-        /// <param name="camera"> Reference to the Camera Object, so can extract its projection matrix and situate the player onto the screen </param> 
-        /// <param name="camera"> Reference to the Player Object, so can later extract its position and health points </param>
-        /// 
-
         player = GameObject.Find("Player");
         cam = GetComponent<Camera>();
     }
