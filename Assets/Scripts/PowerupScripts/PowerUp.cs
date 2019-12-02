@@ -2,31 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// <para> Script that manages effect of the power ups which, when hit by the player, changes the pitch of the background music </para>
+/// </summary>
+
 public class PowerUp : MonoBehaviour
 {
     public GameObject theAM;
     public GameObject ES;
     public GameObject Camera;
 
-    //static public int counter = 0;
-
-    //private System.Random randomGenerator;
-
+    /// <summary>
+    /// <para> Function that retrieves game objects needed to modify game elements including audio pitch, environment slice generation, and moving speed of the main camera </para>
+    /// 
+    /// </summary>
     private void Start()
     {
+
         theAM = GameObject.FindGameObjectWithTag("Audio");
         ES = GameObject.FindGameObjectWithTag("EnvironmentSliceGenerator");
         Camera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
+    /// <summary>
+    /// <para> Funtion that handles detection of collision between the player and power ups. If collision is detected, call Pickup() to make changes to game objects </para>
+    /// </summary>
+    /// <param name="collision"> A Collider2D object used to detech collsion </param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             Pickup();
         }
     }
 
+    /// <summary>
+    /// <para> Function that make changes to BGM's pitch, generator of environment slice, and the moving speed of the camera </para>
+    /// </summary>
     void Pickup()
     {
         AudioSource myAS = theAM.GetComponent<AudioSource>();
@@ -36,12 +48,12 @@ public class PowerUp : MonoBehaviour
 
         myAS.pitch = Random.Range(0.7f, 1.3f);
 
-        if(myAS.pitch < 0.9)
+        if (myAS.pitch < 0.9)
         {
             ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Low);
             CM.movementSpeed = 0.1f;
         }
-        else if(myAS.pitch > 1.1)
+        else if (myAS.pitch > 1.1)
         {
             ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.High);
             CM.movementSpeed = 0.13f;
@@ -51,27 +63,7 @@ public class PowerUp : MonoBehaviour
             ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Medium);
             CM.movementSpeed = 0.115f;
         }
-        //if (counter != 2)
-        //{
-        //    counter++;
-        //}
-        //else if (counter == 1)
-        //{
-        //    myAS.pitch = 1f;
-        //    ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Medium);
-        //    CM.movementSpeed = 0.1f;
-        //    counter++;
-        //}
-        //else if (counter == 2)
-        //{
-        //    myAS.pitch = 0.8f;
-        //    ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Low);
-        //    CM.movementSpeed = 0.115f;
-        //    counter = 0;
-        //}
-       
-        //theAS.pitch = 2;
-        //Debug.Log(counter);
+
         Destroy(gameObject);
     }
 }
