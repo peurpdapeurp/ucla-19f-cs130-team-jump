@@ -29,7 +29,7 @@ public class Patrol : MonoBehaviour
         groundDetectionXOffset = w / 2; // + 0 * w;
         groundDetectionYOffset = h / 2;
         groundDetectionRayLengthScalar = 0.5f;
-        sideDetectionRayLengthScalar = 0.5f; // w;
+        sideDetectionRayLengthScalar = 3.0f; // w;
     }
 
     /**
@@ -52,20 +52,20 @@ public class Patrol : MonoBehaviour
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
-        Vector3 groundRayStart = new Vector3(transform.position[0] - groundDetectionXOffset * Mathf.Sign(normal[1]),
-                                             transform.position[1] - groundDetectionYOffset * Mathf.Sign(normal[1]),
+        Vector3 groundRayStart = new Vector3(transform.position[0] - (groundDetectionXOffset * Mathf.Sign(normal[1]) * 0.75f),
+                                             transform.position[1] - (groundDetectionYOffset * Mathf.Sign(normal[1]) * 0.9f),
                                              transform.position[2]);
         Vector2 groundRay = new Vector2(normal[0], -1 * normal[1] * groundDetectionRayLengthScalar);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundRayStart, groundRay, groundDetectionRayLengthScalar, whatIsGround);
         Debug.DrawRay(groundRayStart, groundRay, Color.red);
 
-        Vector3 sideRayStart = transform.position + new Vector3((w / 2 + w * 0.1f) * Mathf.Sign(transform.localScale[0]) * -1.0f, -w*3/8, 0);
-        Vector2 sideRay = Vector2.right * sideDetectionRayLengthScalar * Mathf.Sign(transform.localScale[0]);
-        RaycastHit2D sideInfo = Physics2D.Raycast(sideRayStart, sideRay, sideDetectionRayLengthScalar, whatIsGround);
+        Vector3 sideRayStart = transform.position + new Vector3((w / 2 - w * 0.2f) * Mathf.Sign(transform.localScale[0]) * -1.0f, -w*1/4, 0);
+        Vector2 sideRay = Vector2.left * sideDetectionRayLengthScalar * Mathf.Sign(transform.localScale[0]);
+        RaycastHit2D sideInfo = Physics2D.Raycast(sideRayStart, sideRay, sideDetectionRayLengthScalar, (whatIsGround | (1 << LayerMask.NameToLayer("Enemy"))));
         Debug.DrawRay(sideRayStart, sideRay, Color.white);
         Debug.Log("Side info collider: " + sideInfo.collider);
-        
-        if (!groundInfo.collider || sideInfo.collider)
+
+        if (!(groundInfo.collider) || sideInfo.collider)
         {
             if (movingRight)
             {

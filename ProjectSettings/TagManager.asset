@@ -6,6 +6,10 @@ TagManager:
   tags:
   - LossText
   - CurrentHealth
+  - Audio
+  - EnvironmentSliceGenerator
+  - Enemy
+  - TimerText
   layers:
   - Default
   - TransparentFX

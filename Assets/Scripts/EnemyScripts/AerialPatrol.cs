@@ -7,12 +7,11 @@ using UnityEngine;
 /// </summary>
 public class AerialPatrol : Patrol
 {
-
     private bool movingDown = true;
-
     private float initialY;
-
     private float dist;
+    private bool attack = false;
+    public Animator animator;
 
     /// <summary>
     /// This function is called before the first frame update. It stores the initial position of the enemy
@@ -28,27 +27,52 @@ public class AerialPatrol : Patrol
     /// </summary>
     void Update()
     {
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
-        dist = initialY - transform.position.y;
-        if (dist > 3)
+        if (!attack)
         {
-            if (movingDown)
+            //Note that Raycast works ONLY with the tilemap, not with enemies and player
+            float offset = gameObject.transform.position.y - gameObject.transform.position.x;
+            float playerOffset = GameObject.FindWithTag("Player").transform.position.y - GameObject.FindWithTag("Player").transform.position.x;
+            if ((GameObject.FindWithTag("Player").transform.position.x < gameObject.transform.position.x) && ((playerOffset <= offset)))
             {
-                //transform.eulerAngles = new Vector3(-180, 0, 0);
-                speed *= -1;
-                movingDown = false;
+                attack = true;
+                animator.SetBool("IsAttacking", true);
+                speed = Mathf.Abs(speed);
             }
-            
         }
-        else if (dist < -3)
+        if (!attack)
         {
-            if (!movingDown)
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+            dist = initialY - transform.position.y;
+            if (dist > 12)
             {
-                //transform.eulerAngles = new Vector3(0, 0, 0);
-                speed *= -1;
-                movingDown = true;
+                if (movingDown)
+                {
+                    speed *= -1;
+                    movingDown = false;
+                }
             }
+            else if (dist < -5)
+            {
+                if (!movingDown)
+                {
+                    speed *= -1;
+                    movingDown = true;
+                }
+            }
+        }
+        else
+        {
+            transform.Translate(new Vector3(-3, -3, 0) * speed * Time.deltaTime);
         }
         TryDeallocate();
+    }
+
+    protected void TryDeallocate()
+    {
+        var cameraXBoundary = Camera.main.transform.position.x - (Camera.main.aspect * Camera.main.orthographicSize);
+        if (gameObject.transform.position.x < cameraXBoundary)
+        {
+            Destroy(gameObject, 1);
+        }
     }
 }

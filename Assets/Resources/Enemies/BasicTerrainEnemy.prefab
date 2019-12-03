@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 3038324664034689534}
   m_Layer: 0
   m_Name: BasicTerrainEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.69, y: 10.4}
+  m_Size: {x: 10.69, y: 10.47}
   m_EdgeRadius: 0
 --- !u!50 &3525792107913102588
 Rigidbody2D:
@@ -157,7 +157,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.93, y: 10.71}
+  m_Size: {x: 10.78, y: 10.71}
   m_EdgeRadius: 0
 --- !u!114 &7628504785024705500
 MonoBehaviour:
@@ -174,7 +174,7 @@ MonoBehaviour:
   speed: 5
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1588
+    m_Bits: 564
 --- !u!95 &2800625115694550880
 Animator:
   serializedVersion: 3
@@ -210,5 +210,5 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: -7.24}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -9, y: 0}
-  - {x: 9, y: 0}
+  - {x: -7.34, y: 0}
+  - {x: 4.59, y: 0}

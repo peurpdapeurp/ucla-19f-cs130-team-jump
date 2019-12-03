@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 4524045924900658289}
   - component: {fileID: 4093187361285834796}
   - component: {fileID: 3244374546967846647}
-  m_Layer: 0
+  - component: {fileID: 5705157584309850483}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -165,7 +166,7 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: f90ab1ae27026b84991e79275c60fee9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0.055389404, y: -0.16201103}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +225,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   invulnerabilityPeriodSeconds: 1
-  animator: {fileID: 0}
   loseText: {fileID: 0}
   cameraObject: {fileID: 0}
   player: {fileID: 0}
+  timerText: {fileID: 0}
 --- !u!222 &4093187361285834796
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -255,6 +256,42 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!66 &5705157584309850483
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83010364220753240}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 83010364220753242}
+    m_ColliderPaths:
+    - - X: 5487947
+        Y: -6355285
+      - X: 5487947
+        Y: 3115065
+      - X: -4380188
+        Y: 3115036
+      - X: -4380159
+        Y: -6355285
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 0.5487918, y: -0.6355285}
+      - {x: 0.5487918, y: 0.3115065}
+      - {x: -0.4380188, y: 0.3115007}
+      - {x: -0.43801302, y: -0.6355285}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005
 --- !u!1 &83010364267738945
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83010364267738946}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 83010365531482139}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

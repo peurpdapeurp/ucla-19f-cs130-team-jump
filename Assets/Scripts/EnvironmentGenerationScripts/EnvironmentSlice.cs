@@ -74,6 +74,7 @@ public class EnvironmentSlice : MonoBehaviour
     private const string enemyPrefabStringWallWalking = "Enemies/BasicWallWalkingEnemy";
     private const string enemyPrefabStringJumping = "Enemies/BasicJumpingEnemy";
     private const string enemyPrefabStringTerrain = "Enemies/BasicTerrainEnemy";
+    private const string enemyPrefabStringCoin = "Enemies/Coin";
 
     // The number of slices there are per level.
     private const int kMaxNumOfLevelSlices = 3;
@@ -253,6 +254,14 @@ public class EnvironmentSlice : MonoBehaviour
                         locations.RemoveAt(listIndex);
                         break;
                     }
+                case enemyPrefabStringCoin:
+                    {
+                        int listIndex = randomGenerator.Next(locations.Count);
+                        Instantiate(enemy, locations[listIndex], Quaternion.Euler(0, 0, 0));
+                        // Don't instantiate at same place;
+                        locations.RemoveAt(listIndex);
+                        break;
+                    }
             }
         }
     }
@@ -299,7 +308,7 @@ public class EnvironmentSlice : MonoBehaviour
 
     private string getRandomEnemyPrefabString()
     {
-        switch (randomGenerator.Next(4))
+        switch (randomGenerator.Next(5))
         {
             case 0:
                 {
@@ -316,6 +325,10 @@ public class EnvironmentSlice : MonoBehaviour
             case 3:
                 {
                     return enemyPrefabStringWallWalking;
+                }
+            case 4:
+                {
+                    return enemyPrefabStringCoin;
                 }
             default:
                 {

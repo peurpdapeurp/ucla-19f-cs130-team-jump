@@ -7,12 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 3;
     public int invulnerabilityPeriodSeconds = 1;
-    public Animator animator;
     private int currentHealth;
     private GameObject currentHealthText;
     public GameObject loseText;
     public GameObject cameraObject;
     public GameObject player;
+    public GameObject timerText;
     private float lastDamageTime = 0f;
 
     public void Start()
@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
         cameraObject = GameObject.Find("MainCamera");
         loseText = GameObject.Find("LossText");
         loseText.GetComponent<Text>().enabled = false;
+        timerText = GameObject.Find("TimerText");
         player = GameObject.Find("Player");
     }
 
@@ -32,16 +33,20 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
-        animator.SetBool("IsDamaged", true);
-        Invoke("setDamageOff", 0.5f);
+
         currentHealth--;
         player.GetComponent<PlayerParticle>().Flash();
 
         if (currentHealth <= 0)
         {
             cameraObject.GetComponent<CameraMover>().movementSpeed = 0;
-            loseText.GetComponent<Text>().enabled = true;
             currentHealthText.GetComponent<Text>().enabled = false;
+            timerText.GetComponent<Timer>().StopTimer();
+            timerText.GetComponent<Text>().enabled = false;
+            loseText.GetComponent<Text>().enabled = true;
+            loseText.GetComponent<Text>().text =
+                "WASTED" + "\n" +
+                "You lasted " + Mathf.Round(timerText.GetComponent<Timer>().currentTime) + " seconds.";
         }
         else
             currentHealthText.GetComponent<Text>().text = "Health: " + currentHealth;
@@ -58,10 +63,5 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = 0;
         invulnerabilityPeriodSeconds = 0;
         applyDamage();
-    }
-
-    private void setDamageOff()
-    {
-        animator.SetBool("IsDamaged", false);
     }
 }
