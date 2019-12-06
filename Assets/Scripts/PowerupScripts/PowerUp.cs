@@ -12,6 +12,7 @@ public class PowerUp : MonoBehaviour
     public GameObject ES;
     public GameObject Camera;
 
+    public GameObject Player;
     public float speedBonus = 20f;
     public int speedBonusDuration = 5;
 
@@ -21,21 +22,25 @@ public class PowerUp : MonoBehaviour
     /// </summary>
     private void Start()
     {
-
         theAM = GameObject.FindGameObjectWithTag("Audio");
         ES = GameObject.FindGameObjectWithTag("EnvironmentSliceGenerator");
         Camera = GameObject.FindGameObjectWithTag("MainCamera");
+
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     /// <summary>
     /// <para> Funtion that handles detection of collision between the player and power ups. If collision is detected, call Pickup() to make changes to game objects </para>
     /// </summary>
-    /// <param name="collision"> A Collider2D object used to detech collsion </param>
+    /// <param name="collision"> A Collider2D object used to detect collision </param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Pickup(collision);
+            //ModifyPlayerSpeed(collision);
+            Speeding myPlayer = Player.GetComponent<Speeding>();
+            myPlayer.GetSpeedUpgrade(speedBonus, speedBonusDuration);
+            Pickup();
         }
     }
 
@@ -43,15 +48,15 @@ public class PowerUp : MonoBehaviour
     /// <para> Function that modifies player's speed
     /// </para>
     /// </summary>
-    private void ModifyPlayerSpeed(Collider2D collision)
-    {
-        collision.GetComponent<Speeding>().GetSpeedUpgrade(speedBonus, speedBonusDuration);
-    }
+    // private void ModifyPlayerSpeed(Collider2D collision)
+    // {
+        
+    // }
 
     /// <summary>
     /// <para> Function that make changes to BGM's pitch, generator of environment slice, and the moving speed of the camera </para>
     /// </summary>
-    private void Pickup(Collider2D collision)
+    private void Pickup()
     {
 
         AudioSource myAS = theAM.GetComponent<AudioSource>();
@@ -76,8 +81,6 @@ public class PowerUp : MonoBehaviour
             ES_Scipt.ChooseNextSlice(EnvironmentSlice.MusicLevel.Medium);
             CM.movementSpeed = 0.115f;
         }
-
-        ModifyPlayerSpeed(collision);
 
         Destroy(gameObject);
     }
