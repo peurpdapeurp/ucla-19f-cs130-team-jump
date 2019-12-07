@@ -7,11 +7,30 @@ using UnityEngine;
 /// </summary>
 public class AerialPatrol : Patrol
 {
+    /// <summary>
+    /// Flag to indicate vertical direction of enemy.
+    /// </summary>
     private bool movingDown = true;
+    /// <summary>
+    /// The initial vertical position of the enemy GameObject.
+    /// </summary>
     private float initialY;
+    /// <summary>
+    /// The current distance the enemy GameObject is from initialY.
+    /// </summary>
     private float dist;
+    /// <summary>
+    /// Flag to set if the enemy is attacking. Flag will be used for animator and movement.
+    /// </summary>
     private bool attack = false;
+    /// <summary>
+    /// The animator object to which the GameObject is attached to, which controls the animation of the enemy Gameobject.
+    /// </summary>
     public Animator animator;
+    /// <summary>
+    /// Flag to set if one wants the enemy to check for collisions with other enemies.
+    /// </summary>
+    bool checkCollisions = true;
 
     /// <summary>
     /// This function is called before the first frame update. It stores the initial position of the enemy

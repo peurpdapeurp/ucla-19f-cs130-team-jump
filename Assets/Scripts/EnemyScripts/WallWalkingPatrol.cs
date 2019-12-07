@@ -17,6 +17,10 @@ public class WallWalkingPatrol : Patrol
     /// The normal vector, which will always be perpendicular to the wall the enemy is walking on.
     /// </summary>
     private Vector2 normal;
+    /// <summary>
+    /// Flag to set if one wants the enemy to check for collisions with other enemies.
+    /// </summary>
+    bool checkCollisions = false;
 
     public void Start()
     {

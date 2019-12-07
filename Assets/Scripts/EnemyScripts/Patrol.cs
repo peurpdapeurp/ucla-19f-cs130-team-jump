@@ -36,6 +36,10 @@ public class Patrol : MonoBehaviour
     /// Normal vector, which is always perpendicular to the surface the enemy is walking on.
     /// </summary>
     private Vector2 normal;
+    /// <summary>
+    /// Flag to set if one wants the enemy to check for collisions with other enemies.
+    /// </summary>
+    bool checkCollisions = true;
 
     /// <summary>
     /// Whether or not the enemy is currently moving to the right.
@@ -145,10 +149,17 @@ public class Patrol : MonoBehaviour
             PlayerHealth playerHealth = collision.GetComponent<PlayerHealth>();
             Rigidbody2D playerRigidbody2D = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
             Vector2 knockbackVector = Vector2.up * 10.0f;
-            //playerRigidbody2D.AddForce(knockbackVector * 500f * playerRigidbody2D.mass);
-            //Debug.Log("knockbackVector: " + knockbackVector);
             playerRigidbody2D.velocity = (knockbackVector);
             playerHealth.applyDamage();
+        }
+        else if (checkCollisions && collision.CompareTag("Enemy"))
+        {
+            movingRight = !movingRight;
+            groundDetectionXOffset = -groundDetectionXOffset;
+            Vector3 newScale = transform.localScale;
+            newScale.x *= -1;
+            transform.localScale = newScale;
+            speed = -speed;
         }
     }
 
