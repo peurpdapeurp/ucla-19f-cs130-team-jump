@@ -16,10 +16,19 @@ using UnityEngine.SceneManagement;
 
 public class PostProcessScript : MonoBehaviour
 {
+    private float radius;
 
     public GameObject player;
     public Camera cam;
     public Material mat;
+
+    public const float kFullHealthRadius = 1.0f;
+    public const float kTwoHealthRadius = 0.3f;
+
+    public float GetRadius()
+    {
+        return radius;
+    }
 
     public void Start()
     {
@@ -38,15 +47,14 @@ public class PostProcessScript : MonoBehaviour
             mat.SetInt("_Dead", 0);
 
             int health = player.GetComponent<PlayerHealth>().getCurrentHealth();
-            float radius;
 
             switch (health)
             {
                 case 3:
-                    radius = 1.0f;
+                    radius = kFullHealthRadius;
                     break;
                 case 2:
-                    radius = 0.3f;
+                    radius = kTwoHealthRadius;
                     break;
                 case 1: //If player about to die 
                     float time = 5.0f * Time.realtimeSinceStartup;

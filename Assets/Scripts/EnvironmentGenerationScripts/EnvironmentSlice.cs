@@ -38,7 +38,7 @@ public class EnvironmentSlice : MonoBehaviour
     /// Contains the coordinates where the next slice should be places. Value is
     /// created by using the previous slice's upper bounds.
     /// </summary>
-    private Vector3 currMax;
+    public Vector3 currMax;
 
     private LevelGenerated generatedLevel;
 
@@ -57,7 +57,7 @@ public class EnvironmentSlice : MonoBehaviour
     /// Offset used to check when the next slice should be generated. Used with
     /// the camera's upper bound.
     /// </summary>
-    private const int kCameraOffset = 2;
+    public const int kCameraOffset = 2;
 
     /// <summary>
     /// Create different number of enemies based on the slice that was generated.

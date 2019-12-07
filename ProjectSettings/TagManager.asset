@@ -10,6 +10,10 @@ TagManager:
   - EnvironmentSliceGenerator
   - Enemy
   - TimerText
+  - HighLevelTileMap
+  - LowLevelTileMap
+  - MediumLevelTileMap
+  - Powerup
   layers:
   - Default
   - TransparentFX
