@@ -39,7 +39,7 @@ public class Patrol : MonoBehaviour
     /// <summary>
     /// Flag to set if one wants the enemy to check for collisions with other enemies.
     /// </summary>
-    bool checkCollisions = true;
+    protected bool checkCollisions = true;
 
     /// <summary>
     /// Whether or not the enemy is currently moving to the right.

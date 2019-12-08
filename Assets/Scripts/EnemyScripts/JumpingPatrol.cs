@@ -40,10 +40,6 @@ public class JumpingPatrol : Patrol
     /// The force of gravity which affects the enemy.
     /// </summary>
     private float gravityForce = 5f;
-    /// <summary>
-    /// Flag to set if one wants the enemy to check for collisions with other enemies.
-    /// </summary>
-    bool checkCollisions = false;
 
     /// <summary>
     /// The animator object to which the GameObject is attached to, which controls the animation of the enemy Gameobject.
@@ -69,6 +65,7 @@ public class JumpingPatrol : Patrol
         /// </summary>
         base.Start();
         sideDetectionRayLength = (h / 2) + (0.05f * h);
+        checkCollisions = false;
     }
 
     /**

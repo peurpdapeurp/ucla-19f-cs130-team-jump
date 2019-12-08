@@ -27,10 +27,6 @@ public class AerialPatrol : Patrol
     /// The animator object to which the GameObject is attached to, which controls the animation of the enemy Gameobject.
     /// </summary>
     public Animator animator;
-    /// <summary>
-    /// Flag to set if one wants the enemy to check for collisions with other enemies.
-    /// </summary>
-    bool checkCollisions = true;
 
     /// <summary>
     /// This function is called before the first frame update. It stores the initial position of the enemy
@@ -39,6 +35,7 @@ public class AerialPatrol : Patrol
     {
         base.Start();
         initialY = transform.position.y;
+        checkCollisions = false;
     }
 
     /// <summary>

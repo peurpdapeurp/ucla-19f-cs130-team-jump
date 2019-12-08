@@ -17,10 +17,6 @@ public class WallWalkingPatrol : Patrol
     /// The normal vector, which will always be perpendicular to the wall the enemy is walking on.
     /// </summary>
     private Vector2 normal;
-    /// <summary>
-    /// Flag to set if one wants the enemy to check for collisions with other enemies.
-    /// </summary>
-    bool checkCollisions = false;
 
     public void Start()
     {
@@ -30,6 +26,7 @@ public class WallWalkingPatrol : Patrol
         base.Start();
         GetComponent<Rigidbody2D>().gravityScale = 0.0f;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
+        checkCollisions = false;
     }
     public void Update()
     {
