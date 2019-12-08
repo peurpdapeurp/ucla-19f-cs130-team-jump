@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         /// Such conditions would include whether the player is running, jumping, falling, or crouching, and would would also
         /// notify the Animator object what state the player is in to have the animation correspond to the current state.
         /// </summary>
+        Debug.Log("speed: " + runSpeed);
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         if (Input.GetButtonDown("Jump"))
