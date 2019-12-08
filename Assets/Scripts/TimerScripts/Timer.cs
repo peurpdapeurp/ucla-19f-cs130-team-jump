@@ -17,10 +17,21 @@ public class Timer : MonoBehaviour
     /// The current time in seconds.
     /// </summary>
     public float currentTime;
+
+    /// <summary>
+    /// Last rounded time
+    /// </summary>
+    public float roundedTime;
+
     /// <summary>
     /// Whether or not the timer has been stopped.
     /// </summary>
     private bool stopped;
+
+    /// <summary>
+    /// Player game object
+    /// </summary>
+    public GameObject Player;
 
     // Start is called before the first frame update
     public void Start()
@@ -30,7 +41,9 @@ public class Timer : MonoBehaviour
         /// </summary>
 
         timerText = GameObject.FindGameObjectWithTag("TimerText");
+        Player = GameObject.FindGameObjectWithTag("Player");
         currentTime = 0.0f;
+        roundedTime = 0.0f;
     }
 
     public void Update()
@@ -42,7 +55,12 @@ public class Timer : MonoBehaviour
         /// 
         if (!stopped)
             currentTime += Time.deltaTime;
-        timerText.GetComponent<Text>().text = "Current time: " + Mathf.Round(currentTime);
+        if (roundedTime != Mathf.Round(currentTime))
+        {
+            Player.GetComponent<Speeding>().DecreaseDuration();
+            roundedTime = Mathf.Round(currentTime);
+        }
+        timerText.GetComponent<Text>().text = "Current time: " + roundedTime;
     }
 
     public void StopTimer()

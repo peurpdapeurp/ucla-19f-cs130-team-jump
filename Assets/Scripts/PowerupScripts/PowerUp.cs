@@ -14,7 +14,7 @@ public class PowerUp : MonoBehaviour
 
     public GameObject Player;
     public float speedBonus = 20f;
-    public int speedBonusDuration = 30;
+    public int speedBonusDuration = 5;
 
     /// <summary>
     /// <para> Function that retrieves game objects needed to modify game elements including audio pitch, environment slice generation, and moving speed of the main camera </para>

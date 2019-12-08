@@ -15,23 +15,26 @@ public class Speeding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (speedBonusDuration > 0)
-        {
-            speedBonusDuration--;
-        }
         if (speedBonusDuration == 0)
         {
             RemoveSpeedUpgrade();
         }
-        Debug.Log("bonusDuration why 4: " + speedBonusDuration);
+    }
+
+    public void DecreaseDuration()
+    {
+        if (speedBonusDuration > 0)
+        {
+            speedBonusDuration--;
+        }
     }
 
     public void GetSpeedUpgrade(float bonus, int duration)
     {
-        Debug.Log("duration is: " + duration);
+        // Debug.Log("duration is: " + duration);
         speedBonus += bonus;
         speedBonusDuration += duration;
-        Debug.Log("speedBonusDuration is: " + speedBonusDuration);
+        // Debug.Log("speedBonusDuration is: " + speedBonusDuration);
         GetComponent<PlayerMovement>().runSpeed += bonus;
     }
 

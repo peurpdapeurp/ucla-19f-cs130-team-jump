@@ -560,6 +560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTime: 0
+  roundedTime: 0
+  Player: {fileID: 0}
 --- !u!1 &2021560125
 GameObject:
   m_ObjectHideFlags: 0
