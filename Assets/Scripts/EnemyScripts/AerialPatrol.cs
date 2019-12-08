@@ -46,8 +46,9 @@ public class AerialPatrol : Patrol
         if (!attack)
         {
             float offset = gameObject.transform.position.y - gameObject.transform.position.x;
-            float playerOffset = GameObject.FindWithTag("Player").transform.position.y - GameObject.FindWithTag("Player").transform.position.x;
-            if ((GameObject.FindWithTag("Player").transform.position.x < gameObject.transform.position.x) && ((playerOffset <= offset)))
+            GameObject player = GameObject.Find("Player");
+            float playerOffset = player.transform.position.y - player.transform.position.x;
+            if ((player.transform.position.x < gameObject.transform.position.x) && ((playerOffset <= offset)))
             {
                 attack = true;
                 animator.SetBool("IsAttacking", true);

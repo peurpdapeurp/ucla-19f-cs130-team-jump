@@ -40,8 +40,8 @@ public class Timer : MonoBehaviour
         /// <para> Function to initialize the timer. Finds the timerText object and initializes currentTime to 0. </para>  	
         /// </summary>
 
-        timerText = GameObject.FindGameObjectWithTag("TimerText");
-        Player = GameObject.FindGameObjectWithTag("Player");
+        timerText = GameObject.Find("TimerText");
+        Player = GameObject.Find("Player");
 
         currentTime = 0.0f;
         roundedTime = 0.0f;
