@@ -14,7 +14,7 @@ public class PowerUp : MonoBehaviour
 
     public GameObject Player;
     public float speedBonus = 20f;
-    public int speedBonusDuration = 5;
+    public int speedBonusDuration = 30;
 
     /// <summary>
     /// <para> Function that retrieves game objects needed to modify game elements including audio pitch, environment slice generation, and moving speed of the main camera </para>
@@ -38,8 +38,8 @@ public class PowerUp : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             //ModifyPlayerSpeed(collision);
-            Speeding myPlayer = Player.GetComponent<Speeding>();
-            myPlayer.GetSpeedUpgrade(speedBonus, speedBonusDuration);
+            //Speeding myPlayer = ;
+            Player.GetComponent<Speeding>().GetSpeedUpgrade(speedBonus, speedBonusDuration);
             Pickup();
         }
     }

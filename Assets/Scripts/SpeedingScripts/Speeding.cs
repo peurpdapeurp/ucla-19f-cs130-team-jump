@@ -23,13 +23,16 @@ public class Speeding : MonoBehaviour
         {
             RemoveSpeedUpgrade();
         }
+        Debug.Log("bonusDuration why 4: " + speedBonusDuration);
     }
 
     public void GetSpeedUpgrade(float bonus, int duration)
     {
+        Debug.Log("duration is: " + duration);
         speedBonus += bonus;
         speedBonusDuration += duration;
-        GetComponent<PlayerMovement>().runSpeed += speedBonus;
+        Debug.Log("speedBonusDuration is: " + speedBonusDuration);
+        GetComponent<PlayerMovement>().runSpeed += bonus;
     }
 
     public void RemoveSpeedUpgrade()
