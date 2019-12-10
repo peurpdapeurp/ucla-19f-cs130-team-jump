@@ -3,7 +3,7 @@
 1. Download the executable folder:
 You can download only the executable folder from here: https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/peurpdapeurp/ucla-19f-cs130-team-jump/tree/master/executable
 
-2. Click on executable/MusicJump.exe and play
+2. Click on executable/MusicJump.exe (Windows) or executable/MusicJump.app/Contents/MacOS/MusicJump (Mac) and play
 
 3. Force quit by Ctrl + Alt + Del
 
