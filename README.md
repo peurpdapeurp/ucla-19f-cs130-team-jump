@@ -5,7 +5,7 @@ You can download only the executable folder from here: https://minhaskamal.githu
 
 2. Click on executable/MusicJump.exe (Windows) or executable/MusicJump.app/Contents/MacOS/MusicJump (Mac) and play
 
-3. Force quit by Ctrl + Alt + Del
+3. For Windows, force quit by Ctrl + Alt + Del
 
 Or, the following steps require installation of Unity:
 
